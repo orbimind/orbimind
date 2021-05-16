@@ -1,11 +1,11 @@
 import React from 'react';
 import './Posts.css';
 
-async function sendRequest(method, url, data = null) {
-    const responce = await fetch(url);
-    const json = await responce.json();
-    return json;
-}
+// async function sendRequest(method, url, data = null) {
+//     const responce = await fetch(url);
+//     const json = await responce.json();
+//     return json;
+// }
 
 function AllPosts() {
     // let posts = sendRequest('GET', 'https://orbimind.herokuapp.com/api/posts');
