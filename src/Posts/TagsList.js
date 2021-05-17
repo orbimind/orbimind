@@ -6,7 +6,6 @@ export default function TagsList({ post_id }) {
     const [tags, setTags] = useState([]);
     useEffect(() => {
         let cancel;
-        console.log(post_id);
         axios.get("https://orbimind.herokuapp.com/api/posts/" + post_id + "/categories", {
           cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(result => {
@@ -17,7 +16,7 @@ export default function TagsList({ post_id }) {
     }, []);
     return tags.map(tag => {  
         return <TagElement
-            key={tag.id}
+            key={tag}
             title={tag}
         />
     });

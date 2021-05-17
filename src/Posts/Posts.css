@@ -131,6 +131,13 @@
   line-height: 16px;
   color: #000000;
 }
+.postElement > div:last-child > h3#postCreator {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  color: #000000;
+}
 .postElement > div:last-child > span#postContent {
   font-family: Roboto;
   font-size: 13px;

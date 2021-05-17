@@ -1,7 +1,7 @@
 import React from 'react'
 import TagsList from "./TagsList";
 
-export default function PostElement({ title, content, rating, id }) {
+export default function PostElement({ id, title, content, rating, date, user, user_rating }) {
     return (
        <div className='postElement'>
             <div>
@@ -19,6 +19,7 @@ export default function PostElement({ title, content, rating, id }) {
             </div>
             <div>
                 <h1 id="postTitle">{title}</h1>
+                <h3 id="postCreator">asked {date} by {user} {user_rating}</h3>
                 <span id="postContent">{content}</span>
                 <div id="postTags">
                     <TagsList post_id={id}/>
