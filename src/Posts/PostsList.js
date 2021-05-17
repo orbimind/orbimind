@@ -16,17 +16,17 @@ export default function PostsList({ posts }) {
             if(rating > 999)
                 rating = 999;
 
-            // const [user, setUser] = useState([]);
-            // useEffect(() => {
-            //     let cancel;
-            //     axios.get("https://orbimind.herokuapp.com/api/users/" + post.user_id, {
-            //         cancelToken: new axios.CancelToken(c => cancel = c)
-            //     }).then(result => {
-            //         setUser(result.data.map(p => p));
-            //     });
+            const [user, setUser] = useState([]);
+            useEffect(() => {
+                let cancel;
+                axios.get("https://orbimind.herokuapp.com/api/users/" + post.user_id, {
+                    cancelToken: new axios.CancelToken(c => cancel = c)
+                }).then(result => {
+                    setUser(result.data);
+                });
         
-            //     return () => cancel(); 
-            // }, []);
+                return () => cancel(); 
+            }, []);
 
             return <PostElement
                 key={post.id} 
@@ -35,8 +35,8 @@ export default function PostsList({ posts }) {
                 content={content}
                 rating={rating}
                 date={post.created_at}
-                //user={user.username}
-                //user_rating={user.rating}
+                user={user.username}
+                user_rating={user.rating}
             />
     });
 }
