@@ -1,5 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import TagsList from "./TagsList";
+
+const style = {
+    link: {
+        color: "black",
+        textDecoration: "none"
+    }
+}
 
 export default function PostElement({ id, title, content, rating, date, user, user_rating }) {
     return (
@@ -18,7 +26,7 @@ export default function PostElement({ id, title, content, rating, date, user, us
                 </button>
             </div>
             <div>
-                <h1 id="postTitle">{title}</h1>
+                <h1 id="postTitle"><Link to={`/post/${id}`} style={style.link}>{title}</Link></h1>
                 <h3 id="postCreator">asked {date} by {user} {user_rating}</h3>
                 <span id="postContent">{content}</span>
                 <div id="postTags">

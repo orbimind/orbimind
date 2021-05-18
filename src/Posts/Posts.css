@@ -169,6 +169,7 @@
 .tags > h1 {
   font-size: 26px;
   line-height: 30px;
+  font-weight: 500;
   color: #000000;
   margin-bottom: 20px;
 }

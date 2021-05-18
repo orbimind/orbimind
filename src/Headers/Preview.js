@@ -1,7 +1,7 @@
 import React from 'react';
 import './Preview.css';
 
-function Preview() {
+export default function Preview() {
     return (
         <div className='previewRoot'>
             <div className='preview'>
@@ -10,5 +10,3 @@ function Preview() {
         </div>
     );
 }
-
-export default Preview;
