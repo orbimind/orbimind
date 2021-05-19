@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Preview from '../Headers/Preview.js';
-import './Posts.css';
-import FilteringBar from './FilteringBar';
-import PopularTagsList from './PopularTagsList';
+import FilteringBar from '../Filters/FilteringBar';
+import PopularTagsList from '../Tags/PopularTagsList';
 import PostsList from './PostsList';
-import Pagination from './Pagination.js';
+import Pagination from '../Pagination';
 import axios from 'axios';
+import './Posts.css';
 
 function AllPosts() {
     const [posts, setPosts] = useState([]);
@@ -52,10 +52,7 @@ function AllPosts() {
                         currentPage={params.get('page')}
                     />
                 </div>
-                <div className='tags'>
-                    <h1>Popular tags</h1>
-                    <PopularTagsList />
-                </div>
+                <PopularTagsList />
             </div>
         </div>
         </>

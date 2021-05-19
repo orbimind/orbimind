@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import './Posts.css';
+import './Tags.css';
 import TagElement from './TagElement';
 
 function shuffle(array) {
@@ -20,10 +20,19 @@ export default function PopularTagsList({}) {
         return () => cancel(); 
     }, []);
     shuffle(tags);
-    return tags.map(tag => {
-        return <TagElement
-            key={tag.id}
-            title={tag.title}
-        />
-    });
+    return (
+        <div className='popularTags'>
+            <h1>Popular tags</h1>
+            <div>
+                { 
+                    tags.map(tag => {
+                        return <TagElement
+                            key={tag.title}
+                            title={tag.title}
+                        />
+                    })
+                }
+            </div>
+        </div>
+    )
 }

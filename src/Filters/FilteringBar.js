@@ -1,5 +1,5 @@
 import React from 'react';
-import './Posts.css';
+import './Filters.css';
 
 export default function FilteringBar() {
     return (

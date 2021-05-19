@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import TagsList from "./TagsList";
+import TagsList from "../Tags/TagsList";
+import './PostElement.css';
 
 const style = {
     link: {
@@ -29,9 +30,7 @@ export default function PostElement({ id, title, content, rating, date, user, us
                 <h1 id="postTitle"><Link to={`/post/${id}`} style={style.link}>{title}</Link></h1>
                 <h3 id="postCreator">asked {date} by {user} {user_rating}</h3>
                 <span id="postContent">{content}</span>
-                <div id="postTags">
-                    <TagsList post_id={id}/>
-                </div>
+                <TagsList post_id={id}/>
             </div>
         </div>
     )
