@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './SinglePost.css';
 import '../Tags/Tags.css';
+import CommentList from '../Comments/CommentList';
 
 export default function SinglePost() {
     let { post_id } = useParams();
@@ -78,6 +79,7 @@ export default function SinglePost() {
                     </div>
                 </div>
             </div>
+            <CommentList post_id={post_id} />
         </div>
     );
 }
