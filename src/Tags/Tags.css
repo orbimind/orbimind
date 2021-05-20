@@ -1,41 +1,32 @@
 .postTags {
-  width: 100%;
-  min-height: fit-content;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-.popularTags {
-  display: flex;
-  flex-direction: column;
+	width: 100%;
+	min-height: fit-content;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	flex-wrap: wrap;
 }
 .popularTags > h1 {
-  min-height: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+	margin-bottom: 10px;
 }
 
 .popularTags > div {
-  display: flex;
-  flex-direction: row;
-  flex-flow: row wrap;
+	display: flex;
+	flex-direction: column;
 }
-.popularTags > .tagButton {
-  margin-bottom: 6px;
+.popularTags > div > .tagButton {
+	margin: 6px 0;
 }
 .tagButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  height: 24px;
-  background-color: rgba(124, 106, 239, 0.3);
-  border-radius: 4px;
-  padding: 0 8px;
-  text-decoration: none;
-  margin-right: 6px;
-  color: #0b090c;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+	height: 24px;
+	background-color: rgba(124, 106, 239, 0.3);
+	border-radius: 4px;
+	padding: 0 8px;
+	text-decoration: none;
+	margin-right: 6px;
+	color: #0b090c;
 }

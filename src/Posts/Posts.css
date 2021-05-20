@@ -1,33 +1,39 @@
 .postsRoot {
-  width: 100%;
-  min-height: calc(100vh - 160px);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  z-index: 8;
+	width: 100%;
+	min-height: calc(100vh - 160px);
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	z-index: 8;
 }
 .posts {
-  width: 70%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  margin-top: 20px;
-  z-index: 8;
+	width: 70%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+	z-index: 8;
 }
 
 .content {
-  width: 78%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin-right: 28px;
+	width: 78%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	margin-right: 28px;
 }
 
 .postsList {
-  width: calc(100%-78%);
-  min-height: fit-content;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
+	width: 100%;
+	min-height: fit-content;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.popularTags {
+	width: 22%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 }
