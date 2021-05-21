@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PostElement from './PostElement';
-import axios from 'axios';
 
 export default function PostsList({ posts }) {
     return posts.map(post => {
@@ -16,18 +15,6 @@ export default function PostsList({ posts }) {
             if(rating > 999)
                 rating = 999;
 
-            const [user, setUser] = useState([]);
-            useEffect(() => {
-                let cancel;
-                axios.get("https://orbimind.herokuapp.com/api/users/" + post.user_id, {
-                    cancelToken: new axios.CancelToken(c => cancel = c)
-                }).then(result => {
-                    setUser(result.data);
-                });
-        
-                return () => cancel(); 
-            }, []);
-
             return <PostElement
                 key={post.id} 
                 id={post.id}
@@ -35,8 +22,7 @@ export default function PostsList({ posts }) {
                 content={content}
                 rating={rating}
                 date={post.created_at}
-                user={user.username}
-                user_rating={user.rating}
+                user_id={post.user_id}
             />
     });
 }

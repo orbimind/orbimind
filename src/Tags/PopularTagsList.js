@@ -9,6 +9,7 @@ function shuffle(array) {
 
 export default function PopularTagsList() {
     const [tags, setTags] = useState([]);
+
     useEffect(() => {
         let cancel;
         axios.get("https://orbimind.herokuapp.com/api/categories" , {
@@ -19,6 +20,7 @@ export default function PopularTagsList() {
 
         return () => cancel(); 
     }, []);
+    
     shuffle(tags);
     return (
         <div className='popularTags'>

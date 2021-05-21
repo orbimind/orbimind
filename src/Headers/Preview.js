@@ -1,11 +1,11 @@
 import React from 'react';
 import './Preview.css';
 
-export default function Preview() {
+export default function Preview({ title }) {
     return (
         <div className='previewRoot'>
             <div className='preview'>
-                <label>All posts</label>
+                <label>{title}</label>
             </div>
         </div>
     );

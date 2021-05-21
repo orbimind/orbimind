@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import TagsList from "../Tags/TagsList";
 import './PostElement.css';
+import axios from 'axios';
 
 const style = {
     link: {
@@ -10,7 +11,21 @@ const style = {
     }
 }
 
-export default function PostElement({ id, title, content, rating, date, user, user_rating }) {
+export default function PostElement({ id, title, content, rating, date, user_id }) {
+    const [user, setUser] = useState([]);
+
+    useEffect(() => {
+        let cancel;
+
+        axios.get("https://orbimind.herokuapp.com/api/users/" + user_id, {
+            cancelToken: new axios.CancelToken(c => cancel = c)
+        }).then(result => {
+            setUser(result.data);
+        });
+
+        return () => cancel(); 
+    }, []);
+    
     return (
        <div className='postElement'>
             <div>
@@ -28,7 +43,7 @@ export default function PostElement({ id, title, content, rating, date, user, us
             </div>
             <div>
                 <h1 id="postTitle"><Link to={`/post/${id}`} style={style.link}>{title}</Link></h1>
-                <h3 id="postCreator">asked {date} by {user} {user_rating}</h3>
+                <h3 id="postCreator">asked {date} by {user.username} {user.rating}</h3>
                 <span id="postContent">{content}</span>
                 <TagsList post_id={id}/>
             </div>
