@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.svg';
+import logo from '../../assets/logo.svg';
+import Cookies from 'js-cookie';
 import axios from 'axios';
 import './Auth.css';
 
@@ -50,7 +51,16 @@ export class Login extends Component {
             promise, 
             {
                 loading: 'Logging in...',
-                success: (response) => response.data.message,
+                success: (response) => {
+                    Cookies.set('token', response.data.token, { expires: response.data.expires_in });
+                    Cookies.set('id', response.data.user.id, { expires: response.data.expires_in });
+                    Cookies.set('username', response.data.user.username, { expires: response.data.expires_in });
+                    Cookies.set('name', response.data.user.name, { expires: response.data.expires_in });
+                    setTimeout(() => {
+                        location.href = '/';
+                    }, 2000);
+                    return response.data.message;
+                },
                 error: (error) => {
                     if(error.response.data.errors) {
                         if(error.response.data.errors.username)
@@ -64,7 +74,7 @@ export class Login extends Component {
                 }
             }
         );
-
+        
         event.preventDefault();
     }
 
@@ -171,7 +181,12 @@ export class Register extends Component {
             promise, 
             {
                 loading: 'Registering...',
-                success: (response) => response.data.message,
+                success: (response) => {
+                    setTimeout(() => {
+                        location.href = '/login';
+                    }, 2000);
+                    return response.data.message;
+                },
                 error: (error) => {
                     if(error.response.data.errors) {
                         if(error.response.data.errors.username)

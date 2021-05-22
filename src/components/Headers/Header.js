@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { LoginButton, UserButton } from './User';
 import './Header.css';
-import logoFull from '../assets/logo-full.svg';
+import logoFull from '../../assets/logo-full.svg';
+import Cookies from 'js-cookie';
 
 export default function Header() {
     const [search, setSearch] = useState('');
+    let token = Cookies.get('token');
 
     return (
         <div className='headerRoot'>
@@ -27,12 +30,11 @@ export default function Header() {
                 <Link to='/help' className='link'>
                     Help
                 </Link>
-                <Link to='/login' className='userBar'>
-                    <button>Log in</button>
-                    <svg viewBox="0 0 34 34" fill="#F2F0FE" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="17" cy="17" r="17" />
-                    </svg>
-                </Link>
+                {
+                    !token
+                    ? <LoginButton />
+                    : <UserButton username={Cookies.get('username')} user_id={Cookies.get('id')}/>
+                }
             </div>
         </div>
     );
