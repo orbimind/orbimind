@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Comment from './Comment';
+import moment from 'moment';
 import axios from "axios";
+
+import Comment from './Comment';
 import './Comment.css';
 
 export default function CommentList({ post_id }) {
@@ -22,11 +24,11 @@ export default function CommentList({ post_id }) {
             {
                 comments.map(comment => {  
                     return <Comment
-                            key={comment.id}
-                            user_id={comment.user_id}
-                            rating={comment.rating}
-                            date={comment.created_at}
-                            content={comment.content}
+                            key={ comment.id }
+                            user_id={ comment.user_id }
+                            rating={ comment.rating }
+                            date={ moment(comment.created_at).fromNow() }
+                            content={ comment.content }
                         />
                 })
             }

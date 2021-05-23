@@ -1,6 +1,7 @@
 import React from 'react';
-import Preview from '../Headers/Preview';
+
 import AllTagsList from './AllTagsList';
+import Preview from '../Base/Preview';
 import './Tags.css';
 
 export default function Tags() {
@@ -8,7 +9,7 @@ export default function Tags() {
 
     return (
         <>
-        <Preview title={title}/>
+        <Preview title={ title }/>
         <div className='tagsRoot'>
             <div className='tags'>
                 <AllTagsList />

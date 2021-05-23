@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo.svg';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+
+import logo from '../../assets/logo.svg';
 import './Auth.css';
 
 export class Login extends Component {

@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import './Tags.css';
+
 import TagElement from './TagElement';
+import './Tags.css';
 
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
@@ -29,8 +30,8 @@ export default function PopularTagsList() {
                 { 
                     tags.map(tag => {
                         return <TagElement
-                            key={tag.title}
-                            title={tag.title}
+                            key={ tag.title }
+                            title={ tag.title }
                         />
                     })
                 }

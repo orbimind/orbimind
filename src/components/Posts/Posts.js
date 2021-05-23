@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Preview from '../Headers/Preview.js';
-import FilteringBar from '../Filters/FilteringBar';
-import PopularTagsList from '../Tags/PopularTagsList';
-import PostsList from './PostsList';
-import Pagination from '../Pagination';
 import axios from 'axios';
+
+import PopularTagsList from '../Tags/PopularTagsList';
+import FilteringBar from '../Filters/FilteringBar';
+import Preview from '../Base/Preview.js';
+import Pagination from '../Pagination';
+import PostsList from './PostsList';
 import './Posts.css';
 
 export default function Posts() {
   const location = useLocation()
   const [posts, setPosts] = useState([]);
   const [query, setQuery] = useState(new URLSearchParams(useLocation().search));
-  const [currentPageUrl, setCurrentPageUrl] = useState("https://orbimind.herokuapp.com/api/posts?page=1" + "&category=" + query.get("category"));
+  const [currentPageUrl, setCurrentPageUrl] = useState("https://orbimind.herokuapp.com/api/posts?page=1" + "&category=" + query.get("category") + "&order=created_at$desc");
   const [nextPageUrl, setNextPageUrl] = useState();
   const [prevPageUrl, setPrevPageUrl] = useState();
   const params = new URLSearchParams('?' + currentPageUrl.split('?')[1]);
@@ -29,8 +30,8 @@ export default function Posts() {
     axios.get(currentPageUrl, {
       cancelToken: new axios.CancelToken(c => cancel = c)
     }).then(result => {
-      setNextPageUrl("https://orbimind.herokuapp.com/api/posts?page=" + next + "&category=" + queryCategory);
-      setPrevPageUrl("https://orbimind.herokuapp.com/api/posts?page=" + prev + "&category=" + queryCategory);
+      setNextPageUrl("https://orbimind.herokuapp.com/api/posts?page=" + next + "&category=" + queryCategory + "&order=created_at$desc");
+      setPrevPageUrl("https://orbimind.herokuapp.com/api/posts?page=" + prev + "&category=" + queryCategory + "&order=created_at$desc");
       setPosts(result.data.map(p => p));
     })
 
@@ -55,8 +56,6 @@ export default function Posts() {
     if (newUrl[newUrl.length - 1] === '&') {
       newUrl = newUrl.slice(0, newUrl.length - 1)
     }
-
-    // console.log(newUrl)
 
     setCurrentPageUrl(newUrl)
   }, [query])

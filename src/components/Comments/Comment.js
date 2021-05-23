@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Comment({ user_id, rating, date, content }) {
     const [creator, setCreator] = useState([]);
@@ -31,8 +31,8 @@ export default function Comment({ user_id, rating, date, content }) {
                 </button>
             </div>
             <div>
-                <span>Answered by <Link className="linkUser" to={`/users/${creator.id}`}>{creator.username}</Link> <span id="rating">{creator.rating}</span> {date}</span>
-                <p>{content}</p>
+                <span>Answered by <Link className="linkUser" to={`/users/${ creator.id }`}>{ creator.username }</Link> <span id="rating">{ creator.rating }</span> { date }</span>
+                <p>{ content }</p>
             </div>
         </div>
     );

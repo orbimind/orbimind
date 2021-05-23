@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LoginButton, UserButton } from './User';
-import './Header.css';
-import logoFull from '../../assets/logo-full.svg';
 import Cookies from 'js-cookie';
+
+import logoFull from '../../assets/logo-full.svg';
+import { LoginButton, UserButton } from './Userbar';
+import './Header.css';
 
 export default function Header() {
     const [search, setSearch] = useState('');

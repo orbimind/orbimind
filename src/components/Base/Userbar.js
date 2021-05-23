@@ -44,7 +44,7 @@ export function UserButton({ username, user_id }) {
     // }, [user]);
 
     return (
-        <Link to='/profile' className='userBar'>
+        <Link to={`/user/${ username }`} className='userBar'>
             <button>{ username }</button>
             <img src={temp} alt="avatar" />
         </Link>

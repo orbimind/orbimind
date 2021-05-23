@@ -1,45 +1,82 @@
 @import url("https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
+:root {
+	--white: #fff;
+	--white-accent: #f5f9ff;
+	--white-empty: rgba(39, 0, 69, 0.3);
+	--white-gray: #727272;
+	--black: #000;
+	--black-07: rgba(0, 0, 0, 0.7);
+	--black-004: rgba(0, 0, 0, 0.04);
+	--black-accent-header: #252525;
+	--black-accent-paragraph: #484848;
+	--black-svg: #1a1918;
+	--theme-purple: #7c6aef;
+	--theme-purple-darken: #7c00dd;
+	--shadow-default: 0px 4px 17px rgba(0, 0, 0, 0.1);
+	--shadow-darken: 0px 0px 20px rgba(0, 0, 0, 0.25);
+}
+
 * {
-  font-family: "Signika", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	font-family: "Signika", "Roboto", -apple-system, BlinkMacSystemFont,
+		"Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
 
 button {
-  margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  cursor: pointer;
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	cursor: pointer;
 }
 
 .unselectable,
 img {
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
 }
 
 body {
-  background-color: #f5f9ff;
+	background-color: var(--white-accent);
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+::-webkit-scrollbar {
+	width: 0;
+}
+::selection {
+	background: var(--theme-purple);
+	color: white;
 }
 
 .linkUser {
-  text-decoration: none;
-  color: rgba(124, 106, 239, 0.9);
+	text-decoration: none;
+	color: var(--theme-purple);
+}
+
+h1,
+h2,
+h3,
+h4 {
+	color: var(--black-accent-header);
+}
+
+p {
+	color: var(--black-accent-header);
 }

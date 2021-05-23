@@ -6,14 +6,13 @@
 	font-weight: 600;
 	font-size: 21px;
 	line-height: 26px;
-	color: #000000;
 }
 .singleComment {
 	width: 900px;
 	min-height: 100px;
 	background: #ffffff;
-	box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.15);
-	border-radius: 10px;
+	box-shadow: var(--shadow-default);
+	border-radius: 6px;
 	display: flex;
 	flex-direction: row;
 	margin-top: 20px;
@@ -59,15 +58,15 @@
 	font-weight: 300;
 	font-size: 14px;
 	line-height: 22px;
-	color: #000000;
+	color: var(--black-07);
 	text-decoration: none;
 }
 .singleComment > div:last-child > span > span#rating {
 	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
 	font-size: 12px;
-	color: black;
-	background-color: rgba(124, 106, 239, 0.5);
-	border-radius: 50%;
+	color: var(--black-07);
+	background-color: rgba(124, 106, 239, 0.3);
+	border-radius: 4px;
 	padding: 2px 3px;
 }
 .singleComment > div:last-child > p {
@@ -75,5 +74,4 @@
 	font-weight: 300;
 	font-size: 16px;
 	line-height: 20px;
-	color: #000000;
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
 import SingleTag from './SingleTag';
 
 export default function AllTagsList() {
@@ -16,6 +17,6 @@ export default function AllTagsList() {
     }, []);
 
     return tags.map(tag => {  
-        return <SingleTag title={tag.title} description={tag.description}/>
+        return <SingleTag title={ tag.title } description={ tag.description }/>
     });
 }

@@ -1,71 +1,78 @@
 .postElement {
-  width: 49%;
-  height: 150px;
-  background: #ffffff;
-  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+	width: 49%;
+	height: 150px;
+	background: var(--white);
+	box-shadow: var(--shadow-default);
+	border-radius: 6px;
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
 .postElement > div:first-child {
-  width: 35px;
-  height: 100%;
-  border-right: 1px solid rgba(226, 226, 226, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	width: 35px;
+	height: 100%;
+	border-right: 1px solid rgba(226, 226, 226, 0.5);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 .postElement > div:first-child > button {
-  fill: rgba(165, 165, 165, 0.5);
-  width: 20px;
+	fill: rgba(165, 165, 165, 0.5);
+	width: 20px;
 }
 .postElement > div:first-child > button#dislike > svg {
-  transform: matrix(1, 0, 0, -1, 0, 0);
+	transform: matrix(1, 0, 0, -1, 0, 0);
 }
 .postElement > div:last-child {
-  width: calc(100% - 35px);
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 8px;
+	width: calc(100% - 35px);
+	height: 90%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 8px;
 }
 .postElement > div:last-child > h1#postTitle {
-  font-family: Roboto;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 16px;
-  color: #000000;
+	font-family: Roboto;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 16px;
+	color: var(--black-accent-header);
+	width: calc(100% - 20px);
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
 }
 .postElement > div:last-child > h3#postCreator {
-  font-family: Roboto;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 12px;
-  color: #000000;
+	font-family: Roboto;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 12px;
+	color: var(--black-accent-header);
 }
 .postElement > div:last-child > span#postContent {
-  font-family: Roboto;
-  font-size: 13px;
-  line-height: 13px;
-  color: rgba(0, 0, 0, 0.5);
-  width: calc(100% - 35px);
-  word-wrap: break-word;
+	font-family: Roboto;
+	font-size: 13px;
+	line-height: 13px;
+	color: rgba(0, 0, 0, 0.6);
+	width: calc(100% - 35px);
+	word-wrap: break-word;
 }
 .postElement > div:last-child > div#postTags {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 .postElement > div:last-child > div > button {
-  width: fit-content;
-  height: 24px;
-  background-color: rgba(124, 106, 239, 0.3);
-  border-radius: 4px;
-  padding: 0 8px;
-  margin-right: 6px;
+	width: fit-content;
+	height: 24px;
+	background-color: rgba(124, 106, 239, 0.3);
+	border-radius: 4px;
+	padding: 0 8px;
+	margin-right: 6px;
 }

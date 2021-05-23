@@ -1,72 +1,72 @@
 .authScreen {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 .authScreen > img {
-  width: 150px;
-  height: 150px;
-  margin-top: 62px;
+	width: 150px;
+	height: 150px;
+	margin-top: 62px;
 }
 .authScreen > h1 {
-  font-weight: bold;
-  font-size: 38px;
-  line-height: 47px;
-  color: #000000;
-  margin-bottom: 70px;
+	font-weight: bold;
+	font-size: 38px;
+	line-height: 47px;
+	color: #000000;
+	margin-bottom: 70px;
 }
 .authScreen > form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 .authScreen > form > input {
-  background: #ffffff;
-  box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  width: 430px;
-  height: 40px;
-  margin: 10px 0;
-  padding: 0 14px;
-  font-weight: 400;
-  font-size: 14px;
+	background: #ffffff;
+	box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.15);
+	border-radius: 8px;
+	border: none;
+	outline: none;
+	width: 430px;
+	height: 40px;
+	margin: 10px 0;
+	padding: 0 14px;
+	font-weight: 400;
+	font-size: 14px;
 }
 .authScreen > form > input[type="submit"] {
-  width: 170px;
-  height: 40px;
-  background: #7c6aef;
-  color: white;
-  margin-top: 30px;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
+	width: 170px;
+	height: 40px;
+	background: #7c6aef;
+	color: white;
+	margin-top: 30px;
+	font-weight: 600;
+	font-size: 16px;
+	cursor: pointer;
 }
 .authScreen > form > div {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
 }
 .authScreen > form > div > #forgot {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 15px;
-  color: #7c6aef;
-  text-decoration: none;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 15px;
+	color: #7c6aef;
+	text-decoration: none;
 }
 .authScreen > form > span {
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 17px;
-  color: #000000;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 17px;
+	color: #000000;
 }
 .authScreen > form > span > a {
-  text-decoration: none;
-  color: #7c6aef;
-  font-weight: 700;
+	text-decoration: none;
+	color: #7c6aef;
+	font-weight: 700;
 }

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import TagsList from '../Tags/TagsList';
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
+
+import TagsList from '../Tags/TagsList';
+import CommentList from '../Comments/CommentList';
 import './SinglePost.css';
 import '../Tags/Tags.css';
-import CommentList from '../Comments/CommentList';
 
 export default function SinglePost() {
     let { post_id } = useParams();
@@ -36,7 +37,7 @@ export default function SinglePost() {
             return () => cancel(); 
         }
     }, [post]);
-
+    
     return (
         <div className='postsRoot'>
             <div className='posts'>
@@ -73,7 +74,7 @@ export default function SinglePost() {
                     </div>
                     <div>
                         <h1>{ post.title }</h1>
-                        <span>Asked by  <Link to={`/users/${creator.id}`} className="linkUser"> { creator.username } </Link><span id="rating">{ creator.rating }</span> { post.created_at } </span>
+                        <span>Asked { moment(post.created_at).fromNow() } by <Link to={`/users/${creator.id}`} className="linkUser"> { creator.username } </Link><span id="rating">{ creator.rating }</span></span>
                         <p>{ post.content }</p>
                         <TagsList post_id={post_id}/>
                     </div>

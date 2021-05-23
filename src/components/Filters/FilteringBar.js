@@ -1,13 +1,21 @@
 import React from 'react';
 import './Filters.css';
 
-export default function FilteringBar() {
+export default function FilteringBar({ username }) {
     return (
         <div className='filteringBar'>
-            <div>
-                <span>Didn’t find what you <br />were looking for?</span>
-                <button id='ask'>Ask a question</button>
-            </div>
+            {
+                username 
+                ?
+                <div className='userPosts'>
+                    <span>{ username }'s posts</span>
+                </div>
+                :
+                <div>
+                    <span>Didn’t find what you <br />were looking for?</span>
+                    <button id='ask'>Ask a question</button>
+                </div>
+            }
             <div>
                 <span>Sort by:&nbsp;</span>
                 <select id='sortBy'>

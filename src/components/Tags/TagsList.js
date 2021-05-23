@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import './Tags.css';
+
 import TagElement from "./TagElement";
+import './Tags.css';
 
 export default function TagsList({ post_id }) {
     const [tags, setTags] = useState([]);
@@ -21,8 +22,8 @@ export default function TagsList({ post_id }) {
                 tags.map(tag => {  
                     return (
                         <TagElement
-                            key={tag}
-                            title={tag}
+                            key={ tag }
+                            title={ tag }
                         />
                     )
                 })
