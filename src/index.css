@@ -43,6 +43,19 @@ button {
 	cursor: pointer;
 }
 
+button,
+input,
+select {
+	outline: none;
+	border: none;
+}
+button,
+input,
+select:enabled {
+	outline: none;
+	border: none;
+}
+
 .unselectable,
 img {
 	user-select: none;

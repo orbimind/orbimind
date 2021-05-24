@@ -3,26 +3,26 @@ import Cookies from 'js-cookie';
 import { Route, Redirect } from 'react-router-dom';
 
 export function LoginRoute({ children, ...rest }) {
-    const token = Cookies.get('token');
+    const user = Cookies.getJSON('user');
     return (
       <Route
         {...rest}
         render={({ location }) =>
-            !token 
+            !user 
             ? ( children ) 
-            : ( <Redirect to={{pathname: "/", state: { from: location } }}/> )
+            : ( <Redirect to={{pathname: `/user/${ user.username }`, state: { from: location } }}/> )
         }
       />
     );
 }
 
 export function LoggedRoute({ children, ...rest }) {
-  const token = Cookies.get('token');
+  const user = Cookies.getJSON('user');
   return (
     <Route
       {...rest}
       render={({ location }) =>
-          token 
+          user 
           ? ( children ) 
           : ( <Redirect to={{pathname: "/login", state: { from: location } }}/> )
       }

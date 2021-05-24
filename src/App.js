@@ -9,7 +9,8 @@ import Tags from './components/Tags/Tags';
 import { LoginRoute,LoggedRoute } from './components/Routing';
 import NotFound from './components/NotFound';
 import { Login, Register, ForgotPassword } from "./components/Auth";
-import { User, UserFavorites, UserAccount } from './components/User';
+import { User, UserFavorites } from './components/User';
+import UserAccount from './components/User/UserAccount';
 
 export default function App() {
   return (

@@ -1,0 +1,103 @@
+.settingsBlock {
+	width: 100%;
+	height: fit-content;
+	background-color: var(--white);
+	border-radius: 6px;
+	box-shadow: var(--shadow-default);
+	padding: 20px;
+	display: block;
+}
+.settingsBlock > h1 {
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 30px;
+}
+.settingsBlock > div#settingsContent {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	margin-top: 20px;
+}
+
+.settingsBlock > div#settingsContent > form:first-child {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	width: 50%;
+	height: 100%;
+}
+.settingsBlock > div#settingsContent > form:first-child > label {
+	color: var(--black-07);
+	font-size: 12px;
+}
+.settingsBlock > div#settingsContent > form:first-child > input {
+	background: rgba(124, 106, 239, 0.05);
+	border: 1px solid rgba(24, 24, 26, 0.4);
+	border-radius: 4px;
+	margin-bottom: 14px;
+	width: 60%;
+	height: 30px;
+	padding: 0 10px;
+}
+.settingsBlock > div#settingsContent > form:first-child > div {
+	display: inline;
+	margin-top: 20px;
+}
+.settingsBlock
+	> div#settingsContent
+	> form:first-child
+	> div
+	> input[type="submit"] {
+	width: 120px;
+	height: 30px;
+	background: #7c6aef;
+	border-radius: 6px;
+	border: none;
+	color: white;
+	font-size: 16px;
+	font-weight: 500;
+	cursor: pointer;
+}
+.settingsBlock
+	> div#settingsContent
+	> form:first-child
+	> div
+	> input[type="reset"] {
+	background-color: transparent;
+	border: none;
+	color: var(--theme-purple);
+	font-size: 14px;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.settingsBlock > div#settingsContent > form:last-child {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-end;
+	width: 50%;
+	height: 100%;
+}
+.settingsBlock > div#settingsContent > form:last-child > img {
+	width: 200px;
+	height: 200px;
+	border-radius: 6px;
+	border: 4px solid var(--theme-purple);
+}
+.settingsBlock > div#settingsContent > form:last-child > input[type="file"] {
+	display: none;
+}
+.settingsBlock > div#settingsContent > form:last-child > label {
+	color: var(--theme-purple);
+	height: 30px;
+	display: grid;
+	place-items: center;
+	border-radius: 6px;
+	font-size: 14px;
+	margin: 10px 0;
+	cursor: pointer;
+}

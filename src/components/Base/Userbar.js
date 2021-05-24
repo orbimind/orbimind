@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import temp from '../../assets/logo.svg';
+import axios from 'axios';
+
+const style ={
+    img: {
+        borderRadius: "50%",
+        border: "2px solid var(--theme-purple)"
+    }
+}
 
 export function LoginButton() {
     return (
@@ -13,40 +20,24 @@ export function LoginButton() {
     )
 }
 
-export function UserButton({ username, user_id }) {
-    // const [user, setUser] = useState([]);
-    // const [avatar, setAvatar] = useState();
-    // useEffect(() => {
-    //     let cancel;
+export function UserButton({ username }) {
+    const [user, setUser] = useState([]);
+    useEffect(() => {
+        let cancel;
 
-    //     axios.get("https://orbimind.herokuapp.com/api/users/" + user_id, {
-    //         cancelToken: new axios.CancelToken(c => cancel = c)
-    //     }).then(result => {
-    //         setUser(result.data);
-    //     });
+        axios.get("https://orbimind.herokuapp.com/api/users/" + username, {
+            cancelToken: new axios.CancelToken(c => cancel = c)
+        }).then(result => {
+            setUser(result.data);
+        });
 
-    //     return () => cancel(); 
-    // }, []);
-
-    // useEffect(() => {
-    //     if(user){
-    //         let cancel;
-
-    //         axios.get("https://orbimind.herokuapp.com/api/users/avatar/" + user.image, {
-    //             cancelToken: new axios.CancelToken(c => cancel = c)
-    //         }).then(result => {
-    //             setAvatar(result.data);
-    //         });
-    //         console.log(avatar)
-
-    //         return () => cancel(); 
-    //     }
-    // }, [user]);
+        return () => cancel(); 
+    }, []);
 
     return (
         <Link to={`/user/${ username }`} className='userBar'>
             <button>{ username }</button>
-            <img src={temp} alt="avatar" />
+            <img style={ style.img } src={`https://orbimind-bucket.s3.eu-central-1.amazonaws.com/avatars/${ user.image }`} alt="avatar" />
         </Link>
     )
 }

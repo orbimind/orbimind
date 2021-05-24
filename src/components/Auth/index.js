@@ -53,13 +53,21 @@ export class Login extends Component {
             {
                 loading: 'Logging in...',
                 success: (response) => {
-                    Cookies.set('token', response.data.token, { expires: response.data.expires_in });
-                    Cookies.set('id', response.data.user.id, { expires: response.data.expires_in });
-                    Cookies.set('username', response.data.user.username, { expires: response.data.expires_in });
-                    Cookies.set('name', response.data.user.name, { expires: response.data.expires_in });
+                    Cookies.set('user', { 
+                        id: response.data.user.id,
+                        username: response.data.user.username,
+                        name: response.data.user.name,
+                        email: response.data.user.email,
+                        image: response.data.user.image,
+                        token: response.data.token,
+                    }, { 
+                        expires: (response.data.expires_in / 86400),
+                        secure: true,
+                        sameSite: 'strict'
+                    });
                     setTimeout(() => {
-                        location.href = '/';
-                    }, 2000);
+                        location.href = '/posts';
+                    }, 1000);
                     return response.data.message;
                 },
                 error: (error) => {

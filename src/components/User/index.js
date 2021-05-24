@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Component } from 'react';
 import { useParams } from 'react-router';
-import Cookies from 'js-cookie';
 import axios from 'axios';
 
 import FilteringBar from '../Filters/FilteringBar';
@@ -13,7 +12,7 @@ export function User() {
     const { username } = useParams();
 
     const [posts, setPosts] = useState([]);
-    const [currentPageUrl, setCurrentPageUrl] = useState("https://orbimind.herokuapp.com/api/posts?page=1&user=" + username);
+    const [currentPageUrl, setCurrentPageUrl] = useState("https://orbimind.herokuapp.com/api/posts?page=1&user=" + username + "&order=date$desc");
     const [nextPageUrl, setNextPageUrl] = useState();
     const [prevPageUrl, setPrevPageUrl] = useState();
     
@@ -27,8 +26,8 @@ export function User() {
         axios.get(currentPageUrl, {
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(result => {
-            setNextPageUrl("https://orbimind.herokuapp.com/api/posts?page=" + next + "&user=" + username);
-            setPrevPageUrl("https://orbimind.herokuapp.com/api/posts?page=" + prev + "&user=" + username);
+            setNextPageUrl("https://orbimind.herokuapp.com/api/posts?page=" + next + "&user=" + username + "&order=date$desc");
+            setPrevPageUrl("https://orbimind.herokuapp.com/api/posts?page=" + prev + "&user=" + username + "&order=date$desc");
             setPosts(result.data.map(p => p));
         });
 
@@ -65,17 +64,31 @@ export function User() {
 export function UserFavorites() {
     const { username } = useParams();
 
-    return (
-        <div>
-            {username} favorites
-        </div>
-    )
-}
+    const [faves, setFaves] = useState([]);
 
-export function UserAccount() {
+    useEffect(() => {
+        let cancel;
+
+        axios.get("https://orbimind.herokuapp.com/api/users/" + username + "/favorites", {
+            cancelToken: new axios.CancelToken(c => cancel = c)
+        }).then(result => {
+            setFaves(result.data.map(p => p));
+        });
+
+        return () => cancel(); 
+    }, []);
+
     return (
-        <div>
-            {Cookies.get('username')} settings
+        <div className='userRoot'>
+            <div className='user'>
+                <div>
+                    <FilteringBar username={ username } favorite={ true } noFilters={ true }/>
+                    <PostsList posts={ faves } />
+                </div>
+                <div>
+                    <UserBlock username={ username } />
+                </div>
+            </div>
         </div>
-    )
+    );
 }
