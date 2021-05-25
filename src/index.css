@@ -45,13 +45,15 @@ button {
 
 button,
 input,
-select {
+select,
+textarea {
 	outline: none;
 	border: none;
 }
-button,
-input,
-select:enabled {
+button:enabled,
+input:enabled,
+select:enabled,
+textarea:enabled {
 	outline: none;
 	border: none;
 }

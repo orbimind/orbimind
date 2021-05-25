@@ -17,7 +17,10 @@
 	line-height: 17px;
 	color: black;
 }
-.filteringBar > div:first-child > button {
+.filteringBar > div:first-child > a#ask {
+	display: grid;
+	place-items: center;
+	text-decoration: none;
 	height: 100%;
 	font-size: 14px;
 	line-height: 17px;

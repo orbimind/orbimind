@@ -14,7 +14,7 @@ export default class UserAccount extends Component {
             username: this.user.username,
             name: this.user.name,
             email: this.user.email,
-            avatar: `https://orbimind-bucket.s3.eu-central-1.amazonaws.com/avatars/${ this.user.image }`,
+            avatar: `https://d3djy7pad2souj.cloudfront.net/avatars/${ this.user.image }`,
             password: '',
             password_confirmation: ''
         };
@@ -82,7 +82,7 @@ export default class UserAccount extends Component {
                                 token: this.user.token,
                             }, { 
                                 expires: (response.data.expires_in / 86400),
-                                secure: true,
+                                // secure: true,
                                 sameSite: 'strict'
                             });
 
@@ -161,7 +161,7 @@ export default class UserAccount extends Component {
                         token: this.user.token
                     }, {
                         expires: (response.data.expires_in / 86400),
-                        secure: true,
+                        // secure: true,
                         sameSite: 'strict'
                     });
 
@@ -215,7 +215,7 @@ export default class UserAccount extends Component {
                         </div>
                     </div>
                     <div>
-                        <UserBlock username={ this.state.username } />
+                        <UserBlock username={ this.state.username } logged={ true } toSettings={ false }/>
                     </div>
                 </div>
                 <Toaster

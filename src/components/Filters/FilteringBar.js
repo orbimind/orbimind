@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './Filters.css';
 
 export default function FilteringBar({ username, favorite, noFilters }) {
@@ -17,7 +19,7 @@ export default function FilteringBar({ username, favorite, noFilters }) {
                 :
                 <div>
                     <span>Didn’t find what you <br />were looking for?</span>
-                    <button id='ask'>Ask a question</button>
+                    <Link to='/posts/create' id='ask'>Ask a question</Link>
                 </div>
             }
             {

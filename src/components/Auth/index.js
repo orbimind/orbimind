@@ -62,7 +62,7 @@ export class Login extends Component {
                         token: response.data.token,
                     }, { 
                         expires: (response.data.expires_in / 86400),
-                        secure: true,
+                        // secure: true,
                         sameSite: 'strict'
                     });
                     setTimeout(() => {

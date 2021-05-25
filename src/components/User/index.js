@@ -1,5 +1,6 @@
-import React, { useEffect, useState, Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import Cookies from 'js-cookie';
 import axios from 'axios';
 
 import FilteringBar from '../Filters/FilteringBar';
@@ -41,6 +42,12 @@ export function User() {
         setCurrentPageUrl(prevPageUrl);
     }
 
+    let logged = false;
+    let user = Cookies.getJSON('user');
+    if(user)
+        if(username == user.username)
+            logged = true;
+
     return (
         <div className='userRoot'>
             <div className='user'>
@@ -54,7 +61,7 @@ export function User() {
                     />
                 </div>
                 <div>
-                    <UserBlock username={ username } />
+                    <UserBlock username={ username } logged={ logged } toSettings={ true } />
                 </div>
             </div>
         </div>
@@ -78,6 +85,12 @@ export function UserFavorites() {
         return () => cancel(); 
     }, []);
 
+    let isSettings = false;
+    let user = Cookies.getJSON('user');
+    if(user)
+        if(username == user.username)
+            isSettings = true;
+
     return (
         <div className='userRoot'>
             <div className='user'>
@@ -86,7 +99,7 @@ export function UserFavorites() {
                     <PostsList posts={ faves } />
                 </div>
                 <div>
-                    <UserBlock username={ username } />
+                    <UserBlock username={ username } logged={ isSettings } toSettings={ false } />
                 </div>
             </div>
         </div>

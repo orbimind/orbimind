@@ -68,3 +68,17 @@
 	text-decoration: none;
 	margin-top: 20px;
 }
+.userBlock > div:last-child > button#logoutButton {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	height: 30px;
+	background-color: #ea3c53;
+	border-radius: 10px;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 16px;
+	color: #ffffff;
+	text-decoration: none;
+	margin-top: 20px;
+}

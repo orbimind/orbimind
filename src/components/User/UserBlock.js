@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import toast, { Toaster } from 'react-hot-toast';
+import Cookies from 'js-cookie';
 import axios from 'axios';
 
 import UserStat from './UserStat';
@@ -8,7 +10,37 @@ import './UserBlock.css';
 import ratingSvg from '../../assets/karma.svg';
 import timeSvg from '../../assets/replace.svg';
 
-export default function UserBlock({ username }) {
+function logout(){
+    const api = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer'  + Cookies.getJSON('user').token,
+        },
+        data: {},
+        url: "https://orbimind.herokuapp.com/api/auth/logout"
+    };
+    const promise = axios.post(api.url, api.data, { headers: api.headers });
+
+    toast.promise(
+        promise, 
+        {
+            loading: 'Processing..',
+            success: () => {
+                Cookies.remove('user');
+                setTimeout(() => {
+                    location.href = '/';
+                }, 1000);
+                return 'Goodbye!';
+            },
+            error: (error) => {
+                return error.response.data.message;
+            }
+        }
+    );
+}
+
+export default function UserBlock({ username, logged, toSettings }) {
     const [user, setUser] = useState([]);
     useEffect(() => {
         let cancel;
@@ -25,7 +57,7 @@ export default function UserBlock({ username }) {
     return (
         <div className="userBlock">
             <div>
-                <img src={`https://orbimind-bucket.s3.eu-central-1.amazonaws.com/avatars/${ user.image }`} alt='avatar' />
+                <img src={`https://d3djy7pad2souj.cloudfront.net/avatars/${ user.image }`} alt='avatar' />
             </div>
             <div>
                 <h2>{ username }</h2>
@@ -37,7 +69,33 @@ export default function UserBlock({ username }) {
                     </svg>
                     <Link to={`/user/${ username }/favorites`}>Favorites</Link>
                 </div>
-                <Link to={`/account`}>Account settings</Link>
+                {
+                    (logged && toSettings)
+                    ? <Link to={`/account`}>Account settings</Link>
+                    : <Link to={`/user/${ username }`}>Back</Link>
+                }
+                {
+                    logged && <button id='logoutButton' onClick={ logout }>Log out</button>
+                }
+                <Toaster
+                    position="bottom-center"
+                    reverseOrder={false}
+                    toastOptions={{
+                        style: {
+                            borderRadius: '8px',
+                            backgroundColor: 'white',
+                            padding: '10px',
+                        },
+                        duration: 2000,
+                        success: {
+                            iconTheme: {
+                                primary: '#7c6aef',
+                                secondary: '#FFF',
+                            },
+                        },
+                        error: { duration: 4000 }
+                    }}
+                />
             </div>
         </div>
     )

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Base/Header';
 import Footer from './components/Base/Footer';
 import Posts from './components/Posts/Posts';
+import CreatePost from './components/Posts/CreatePost';
 import SinglePost from './components/Posts/SinglePost';
 import Tags from './components/Tags/Tags';
 import { LoginRoute,LoggedRoute } from './components/Routing';
@@ -20,6 +21,7 @@ export default function App() {
         <Route path='/' exact component={ Posts } />
 
         <Route exact path='/posts' component={ Posts } />
+        <LoggedRoute exact path='/posts/create'> <CreatePost /> </LoggedRoute>
         <Route path='/posts/:post_id' component={ SinglePost } />
         <Route exact path='/tags' component={ Tags } />
         <Route exact path='/user/:username' component={ User } />
