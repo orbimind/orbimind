@@ -29,6 +29,7 @@ export default function CommentList({ post_id }) {
                             rating={ comment.rating }
                             date={ moment(comment.created_at).fromNow() }
                             content={ comment.content }
+                            comment_id={ comment.id }
                         />
                 })
             }

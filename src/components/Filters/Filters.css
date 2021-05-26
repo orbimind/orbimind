@@ -39,8 +39,8 @@
 	align-items: center;
 }
 .filteringBar > div:last-child > select {
-	background: #e5e3f3;
-	border: 1px solid rgba(116, 116, 116, 0.3);
+	background: #f8f7ff;
+	border: 1px solid #e1e4e8;
 	border-radius: 5px;
 	height: 100%;
 }
@@ -51,8 +51,8 @@
 	margin-left: 20px;
 }
 .filteringBar > div:last-child > button {
-	background: #e5e3f3;
-	border: 1px solid rgba(116, 116, 116, 0.3);
+	background: #f8f7ff;
+	border: 1px solid #e1e4e8;
 	border-radius: 5px;
 	margin-left: 20px;
 	padding: 0 10px;

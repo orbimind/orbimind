@@ -34,13 +34,16 @@
 	font-size: 12px;
 }
 .settingsBlock > div#settingsContent > form:first-child > input {
-	background: rgba(124, 106, 239, 0.05);
-	border: 1px solid rgba(24, 24, 26, 0.4);
+	background: #f2f0ff;
+	border-bottom: 2px solid #e1e4e8;
 	border-radius: 4px;
 	margin-bottom: 14px;
 	width: 60%;
 	height: 30px;
 	padding: 0 10px;
+}
+.settingsBlock > div#settingsContent > form:first-child > input[type="email"] {
+	margin-bottom: 40px;
 }
 .settingsBlock > div#settingsContent > form:first-child > div {
 	display: inline;

@@ -60,7 +60,7 @@ export default function UserBlock({ username, logged, toSettings }) {
                 <img src={`https://d3djy7pad2souj.cloudfront.net/avatars/${ user.image }`} alt='avatar' />
             </div>
             <div>
-                <h2>{ username }</h2>
+                <h2>{ username }<br/><small>{ user.name }</small></h2>
                 <UserStat title='Rating' image={ ratingSvg } content={ user.rating } />
                 <UserStat title='Member for' image={ timeSvg } content={ moment(user.created_at).fromNow(true) } />
                 <div id='favorites'>

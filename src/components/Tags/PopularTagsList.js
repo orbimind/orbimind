@@ -13,7 +13,7 @@ export default function PopularTagsList() {
 
     useEffect(() => {
         let cancel;
-        axios.get("https://orbimind.herokuapp.com/api/categories" , {
+        axios.get("https://orbimind.herokuapp.com/api/categories?limit=10" , {
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(result => {
             setTags(result.data.map(p => p));

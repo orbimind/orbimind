@@ -197,11 +197,11 @@ export default class UserAccount extends Component {
                                 <label htmlFor="email">Email</label>
                                 <input id="email" value={ this.state.email } onChange={ this.handleChange } type="email" placeholder="Enter your email" />
                                 
-                                <label htmlFor="password">Password</label>
-                                <input id="password" value={ this.state.password } onChange={ this.handleChange } type="password" placeholder="Enter your password" />
+                                <label htmlFor="password">New password</label>
+                                <input id="password" value={ this.state.password } onChange={ this.handleChange } type="password" placeholder="Enter your new password" />
                                 
-                                <label htmlFor="password_confirmation">Password confirmation</label>
-                                <input id="password_confirmation" value={ this.state.password_confirmation } onChange={ this.handleChange } type="password" placeholder="Enter repeat your password" />
+                                <label htmlFor="password_confirmation">New password confirmation</label>
+                                <input id="password_confirmation" value={ this.state.password_confirmation } onChange={ this.handleChange } type="password" placeholder="Repeat your new password" />
                                 <div>
                                     <input type="submit" value="Update" />
                                     <input type="reset" value="No, set it back!" />

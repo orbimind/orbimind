@@ -39,6 +39,11 @@
 	line-height: 20px;
 	margin-bottom: 20px;
 }
+.userBlock > div:last-child > h2 > small {
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 16px;
+}
 .userBlock > div:last-child > div#favorites {
 	display: inline;
 	margin-top: 6px;
