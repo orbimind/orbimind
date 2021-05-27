@@ -1,7 +1,23 @@
 {
   "name": "orbimind-react",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.8.0",
+  "description": "Orbimind - where great minds are in the same orbit.",
+  "main": "index.js",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "scripts": {
+    "start": "webpack serve",
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
     "js-cookie": "^2.2.1",
@@ -11,15 +27,23 @@
     "react-hot-toast": "^1.0.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3",
     "react-select": "^4.3.1"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "preinstall": "npx npm-force-resolutions"
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.6",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-manifest-plugin": "^3.1.1",
+    "webpack-nano": "^1.1.1"
   },
   "browserslist": {
     "production": [
