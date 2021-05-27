@@ -1,21 +1,15 @@
 {
   "short_name": "Orbimind",
-  "name": "Orbimind",
-  "description": "Orbimind - where great minds are in the same orbit.",
-  "author": "Paul Litovka",
-  "theme": {
-    "colors": {
-      "frame": "#7c6aef"
-    }
-  },
+  "name": "Orbimind - where great minds are in the same orbit",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "124x124 96x96 64x64 32x32 24x24 16x16",
+      "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
   ],
   "start_url": "/",
-	"display": "standalone",
-  "version_name": "1.0.0"
+  "display": "standalone",
+  "theme_color": "#7c6aef",
+  "background_color": "#ffffff"
 }

@@ -13,7 +13,10 @@ export default function Posts() {
   const location = useLocation()
   const [posts, setPosts] = useState([]);
   const [query, setQuery] = useState(new URLSearchParams(useLocation().search));
-  const [currentPageUrl, setCurrentPageUrl] = useState("https://orbimind.herokuapp.com/api/posts?page=1" + "&category=" + query.get("category") + "&order=date$desc");
+  let searchValue = '&search=';
+  if(query.has('search'))
+    searchValue = '&search=' + query.get('search');
+  const [currentPageUrl, setCurrentPageUrl] = useState("https://orbimind.herokuapp.com/api/posts?page=1" + "&category=" + query.get("category") + "&order=date$desc" + searchValue);
   const [nextPageUrl, setNextPageUrl] = useState();
   const [prevPageUrl, setPrevPageUrl] = useState();
   const params = new URLSearchParams('?' + currentPageUrl.split('?')[1]);

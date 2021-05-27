@@ -1,6 +1,6 @@
 /node_modules
 /build
-/dest
+/dist
 
 .DS_Store
 ._.DS_Store

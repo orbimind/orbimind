@@ -30,7 +30,7 @@ export default class CommentInput extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.user.token)
+        
         const api = {
             headers: {
                 'Content-Type': 'application/json',
