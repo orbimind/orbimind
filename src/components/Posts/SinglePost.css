@@ -63,7 +63,8 @@
 	justify-content: center;
 	align-items: center;
 }
-.singlePost > div:first-child > div:last-child > button {
+.singlePost > div:first-child > div:last-child > button,
+#edit {
 	fill: rgba(165, 165, 165, 0.5);
 	width: 20px;
 	margin-top: 14px;

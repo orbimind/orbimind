@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import axios from 'axios';
 import AsyncSelect from 'react-select/async';
 import makeAnimated from 'react-select/animated';
+import { withRouter } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
 import Cookies from 'js-cookie';
 
@@ -9,14 +10,35 @@ import './CreatePost.css';
 
 const animated = makeAnimated();
 
-export default class CreatePost extends Component {
+class CreatePost extends Component {
     constructor(props) {
         super(props);
+        this.post_id = this.props.match.params.post_id;
         this.state = {
+            post: {},
             title: '',
             content: '',
             categories: []
         };
+
+        if(this.post_id){
+            const promise = axios.get("https://orbimind.herokuapp.com/api/posts/" + this.post_id);
+            toast.promise(
+                promise, 
+                {
+                    loading: 'Posting...',
+                    success: (response) => {
+                        this.setState({
+                            title: response.data.title,
+                            content: response.data.content
+                        });
+                        return "Loaded"
+                    },
+                    error: (error) => {
+                        return error.response.data.message
+                    }
+                })
+        }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,6 +67,8 @@ export default class CreatePost extends Component {
     }
 
     handleSubmit(event) {
+        event.preventDefault();
+
         let category_id = [];
         for(let i = 0; i < this.state.categories.length; i++)
             category_id.push(this.state.categories[i].value);
@@ -60,9 +84,13 @@ export default class CreatePost extends Component {
                 content: this.state.content,
                 category_id: category_id
             },
-            url: "https://orbimind.herokuapp.com/api/posts"
+            url: this.post_id ? `https://orbimind.herokuapp.com/api/posts/${ this.post_id }` : "https://orbimind.herokuapp.com/api/posts"
         };
-        const promise = axios.post(api.url, api.data, { headers: api.headers });
+        let promise;
+        if(this.post_id)
+            promise = axios.patch(api.url, api.data, { headers: api.headers });
+        else 
+            promise = axios.post(api.url, api.data, { headers: api.headers });
 
         toast.promise(
             promise, 
@@ -72,6 +100,8 @@ export default class CreatePost extends Component {
                     setTimeout(() => {
                         location.href = `/posts/${response.data.id}`;
                     }, 2000);
+                    if(this.post_id)
+                        return 'Your post was updated!';
                     return 'Your post was created!';
                 },
                 error: (error) => {
@@ -92,8 +122,6 @@ export default class CreatePost extends Component {
                 }
             }
         );
-        
-        event.preventDefault();
     }
 
     loadOptions = async (data, callback) => {
@@ -110,7 +138,11 @@ export default class CreatePost extends Component {
         return (
             <div className='createPostRoot'>
                 <div className='createPostBox'>
-                    <h1>Create a post</h1>
+                    {
+                        this.post_id
+                        ? <h1>Edit a post</h1>
+                        : <h1>Create a post</h1>
+                    }
                     <form onSubmit={ this.handleSubmit }>
                         <label htmlFor="title">Post title</label>
                         <input id="title" value={ this.state.title } onChange={ this.handleChange } type="text" placeholder="React problem with JSX rendering..." />
@@ -146,8 +178,11 @@ export default class CreatePost extends Component {
                                 }
                             })}
                         />
-
-                        <input type='submit' value='Create post' />
+                        {
+                        this.post_id
+                            ? <input type='submit' value='Update post' />
+                            : <input type='submit' value='Create post' />
+                        }
                     </form>
                 </div>
                 <Toaster
@@ -173,3 +208,5 @@ export default class CreatePost extends Component {
         )
     }
 }
+
+export default withRouter(CreatePost);

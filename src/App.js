@@ -22,6 +22,7 @@ export default function App() {
 
         <Route exact path='/posts' component={ Posts } />
         <LoggedRoute exact path='/posts/create'> <CreatePost /> </LoggedRoute>
+        <LoggedRoute exact path='/posts/create/:post_id'> <CreatePost /> </LoggedRoute>
         <Route path='/posts/:post_id' component={ SinglePost } />
         <Route exact path='/tags' component={ Tags } />
         <Route exact path='/user/:username' component={ User } />

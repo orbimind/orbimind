@@ -13,9 +13,7 @@ export function LoginButton() {
     return (
         <Link to='/login' className='userBar'>
             <button>Log in</button>
-            <svg viewBox="0 0 34 34" fill="#F2F0FE" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="17" cy="17" r="17" />
-            </svg>
+            <svg viewBox="0 0 34 34" fill="#F2F0FE" xmlns="http://www.w3.org/2000/svg"><circle cx="17" cy="17" r="17" /></svg>
         </Link>
     )
 }
