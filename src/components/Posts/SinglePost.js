@@ -129,7 +129,7 @@ export default function SinglePost() {
             axios.get("https://orbimind.herokuapp.com/api/posts/" + post_id + "/like", {
                 cancelToken: new axios.CancelToken(c => cancel = c)
             }).then(result => {
-                setLikes(result.data.map(p => p));
+                setLikes(result.data);
             });
             
             return () => cancel(); 

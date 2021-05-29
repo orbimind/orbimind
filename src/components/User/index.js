@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
-import FilteringBar from '../Filters/FilteringBar';
+import FilteringBar from '../Filters';
 import PostsList from '../Posts/PostsList';
 import Pagination from '../Pagination';
 import UserBlock from './UserBlock';

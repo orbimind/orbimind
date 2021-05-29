@@ -1,6 +1,6 @@
 {
   "name": "orbimind-react",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "description": "Orbimind - where great minds are in the same orbit.",
   "private": true,
   "main": "index.js",
@@ -29,7 +29,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/plugin-transform-runtime": "^7.14.3",
-    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
@@ -37,7 +37,7 @@
     "gh-pages": "^3.2.0",
     "html-webpack-plugin": "^5.3.1",
     "style-loader": "^2.0.0",
-    "webpack": "^5.37.1",
+    "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-manifest-plugin": "^3.1.1"

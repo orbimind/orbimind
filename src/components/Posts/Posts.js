@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 import PopularTagsList from '../Tags/PopularTagsList';
-import FilteringBar from '../Filters/FilteringBar';
+import FilteringBar from '../Filters';
 import Preview from '../Base/Preview.js';
 import Pagination from '../Pagination';
 import PostsList from './PostsList';

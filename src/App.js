@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Header from './components/Base/Header';
-import Footer from './components/Base/Footer';
+import { Header, Footer } from './components/Base';
+import Home from './components/Home';
 import Posts from './components/Posts/Posts';
 import CreatePost from './components/Posts/CreatePost';
 import SinglePost from './components/Posts/SinglePost';
@@ -18,7 +18,7 @@ export default function App() {
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route path='/' exact component={ Posts } />
+        <Route path='/' exact component={ Home } />
 
         <Route exact path='/posts' component={ Posts } />
         <LoggedRoute exact path='/posts/create'> <CreatePost /> </LoggedRoute>

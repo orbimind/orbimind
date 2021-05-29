@@ -5,8 +5,9 @@ import Cookies from 'js-cookie';
 import logoFull from '../../assets/logo-full.svg';
 import { LoginButton, UserButton } from './Userbar';
 import './Header.css';
+import './Footer.css';
 
-export default function Header() {
+export function Header() {
     const [search, setSearch] = useState('');
     const user = Cookies.getJSON('user');
 
@@ -37,4 +38,12 @@ export default function Header() {
             </div>
         </div>
     );
+}
+
+export function Footer() {
+    return (
+        <div className='footer'>
+            
+        </div>
+    )
 }
