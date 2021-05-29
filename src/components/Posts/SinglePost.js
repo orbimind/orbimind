@@ -27,7 +27,7 @@ function deletePost(token, id){
         {
             loading: 'Processing..',
             success: () => {
-                setTimeout(location.reload(), 2000);
+                setTimeout(location.href = '/posts', 1000);
                 return "Deleted!";
             },
             error: (error) => {
@@ -205,8 +205,10 @@ export default function SinglePost() {
                     if(response.data.message.includes('deleted')){
                         setLikeType(null)
                         setCurrentRating(prev => prev += type === 'like' ? -1 : 1);
-                    }
-                    else {
+                    } else if(response.data.message.includes('switched')){
+                        setLikeType(type)
+                        setCurrentRating(prev => prev += type === 'like' ? 2 : -2);
+                    } else {
                         setLikeType(type)
                         setCurrentRating(prev => prev += type === 'like' ? 1 : -1);
                     }
