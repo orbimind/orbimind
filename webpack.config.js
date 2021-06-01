@@ -23,7 +23,7 @@ module.exports = {
         host: '0.0.0.0',
         port: 3000,
         open: true,
-        hot: true,
+        hot: false,
     },
     module : {
         rules : [
@@ -41,11 +41,6 @@ module.exports = {
                 test : /\.css$/, 
                 exclude: /node_modules/,
                 use:['style-loader', 'css-loader']
-            },
-            {
-                test: /\.(png|svg|jpg|jpeg|gif|ico|json)$/,
-                exclude: /node_modules/,
-                use: 'file-loader?name=[name].[ext]'
             }
         ]
     },

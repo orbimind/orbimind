@@ -6,7 +6,7 @@
 	justify-content: center;
 	align-items: center;
 }
-.authScreen > img {
+.authScreen > svg {
 	width: 150px;
 	height: 150px;
 	margin-top: 62px;

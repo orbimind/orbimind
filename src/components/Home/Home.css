@@ -1,0 +1,117 @@
+.homeRoot {
+	width: 100%;
+	min-height: calc(100vh - 120px);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+.home {
+	width: 70%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+}
+
+.introBlock {
+	width: 100%;
+	height: fit-content;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 220px 0;
+}
+.introBlock > div:first-child {
+	width: 40%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+.introBlock > div:first-child > h1 {
+	font-family: Signika;
+	font-weight: 600;
+	font-size: 54px;
+	line-height: 59px;
+	color: #000000;
+}
+.introBlock > div:first-child > span {
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 30px;
+	color: var(--black-accent-paragraph);
+	margin: 20px 0 40px 0;
+}
+.buttonsTo {
+	display: inline-flex;
+}
+.buttonsTo > a {
+	display: grid;
+	place-items: center;
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 17px;
+	background: var(--theme-purple);
+	border-radius: 4px;
+	margin-right: 10px;
+	color: white;
+	padding: 10px;
+}
+.buttonsTo > a:last-child {
+	color: var(--theme-purple);
+	background: transparent;
+}
+
+.perksBlock {
+	width: 100%;
+	height: fit-content;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.perksBlock > div {
+	width: 200px;
+	height: 600px;
+	margin: 0 50px;
+}
+.perksBlock > div > h2 {
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 24px;
+	color: var(--black-accent-header);
+}
+.perksBlock > div > p {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 24px;
+	color: var(--black-accent-paragraph);
+	margin-top: 14px;
+}
+
+.outroBlock {
+	width: 100%;
+	display: grid;
+	place-items: center;
+}
+.outroBlock > h1 {
+	color: var(--theme-purple);
+}
+.outroBlock > span {
+	color: var(--black-accent-paragraph);
+	text-align: center;
+}
+.outroBlock > .buttonsTo {
+	margin: 30px 0;
+}
+.outroBlock > div:last-child {
+	display: inline;
+	font-size: 13px;
+}
+.outroBlock > div:last-child > a {
+	text-decoration: none;
+	color: var(--theme-purple);
+}

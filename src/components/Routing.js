@@ -15,6 +15,19 @@ export function LoginRoute({ children, ...rest }) {
       />
     );
 }
+export function LoginHomeRoute({ children, ...rest }) {
+  const user = Cookies.getJSON('user');
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+          !user 
+          ? ( children ) 
+          : ( <Redirect to={{pathname: `/posts`, state: { from: location } }}/> )
+      }
+    />
+  );
+}
 
 export function LoggedRoute({ children, ...rest }) {
   const user = Cookies.getJSON('user');

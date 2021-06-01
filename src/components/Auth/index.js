@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
-import logo from '../../assets/logo.svg';
+import { Logo } from '../../assets/Brand.jsx';
 import './Auth.css';
 
 export class Login extends Component {
@@ -91,7 +91,7 @@ export class Login extends Component {
 
         return (
             <div className="authScreen">
-                <img src={logo} alt='logo' />
+                <Logo />
                 <h1>Welcome back!</h1>
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Enter your username" name="username" value={this.state.username} onChange={this.handleChange} required />

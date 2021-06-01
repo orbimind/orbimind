@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import AsyncSelect from 'react-select/async';
 import makeAnimated from 'react-select/animated';

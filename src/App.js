@@ -7,7 +7,7 @@ import Posts from './components/Posts/Posts';
 import CreatePost from './components/Posts/CreatePost';
 import SinglePost from './components/Posts/SinglePost';
 import Tags from './components/Tags/Tags';
-import { LoginRoute,LoggedRoute } from './components/Routing';
+import { LoginRoute, LoggedRoute, LoginHomeRoute } from './components/Routing';
 import NotFound from './components/NotFound';
 import { Login, Register, ForgotPassword } from "./components/Auth";
 import { User, UserFavorites } from './components/User';
@@ -18,7 +18,7 @@ export default function App() {
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route path='/' exact component={ Home } />
+        <LoginHomeRoute exact path='/'> <Home /> </LoginHomeRoute>
 
         <Route exact path='/posts' component={ Posts } />
         <LoggedRoute exact path='/posts/create'> <CreatePost /> </LoggedRoute>

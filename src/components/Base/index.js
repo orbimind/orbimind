@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
-import logoFull from '../../assets/logo-full.svg';
-import { LoginButton, UserButton } from './Userbar';
-import './Header.css';
-import './Footer.css';
+import { LogoFull, Logo } from '../../assets/Brand.jsx'
+import * as Social from '../../assets/Social.jsx'
+import { LoginButton, UserButton } from './Userbar'
+import './Header.css'
+import './Footer.css'
 
 export function Header() {
     const [search, setSearch] = useState('');
@@ -14,7 +15,7 @@ export function Header() {
     return (
         <div className='headerRoot'>
             <div className='header'>
-                <Link to='/' className='logo'><img src={logoFull} alt='logo' /></Link>
+                <Link to='/' className='logo'><LogoFull width='100%' height='100%' /></Link>
                 <Link to='/posts' className='link'>
                     Posts
                 </Link>
@@ -42,8 +43,24 @@ export function Header() {
 
 export function Footer() {
     return (
-        <div className='footer'>
-            
+        <div className='footerRoot'>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220"><path fill="#7c6aef" fillOpacity="1" d="M0,96L60,117.3C120,139,240,181,360,170.7C480,160,600,96,720,64C840,32,960,32,1080,58.7C1200,85,1320,139,1380,165.3L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+            <div className='footer'>
+                <div>
+                    <Logo />
+                    <div>
+                        <span>Where great minds are in the same orbit.</span>
+                        <span>Copyright © 2021 <a href='https://paxanddos.github.io/'>Paul Litovka</a>. All rights reserved.</span>
+                    </div>
+                </div>
+                <div>
+                    <a href='https://github.com/PAXANDDOS/orbimind-react'><Social.GitHub /></a>
+                    <a href='https://t.me/PAXANDDOS'><Social.Telegram /></a>
+                    <a href='https://www.facebook.com/paxanddos/'><Social.Facebook /></a>
+                    <a href='mailto:pashalitovka@gmail.com'><Social.Email /></a>
+                    <a href='https://github.com/PAXANDDOS/orbimind-api'>API</a>
+                </div>
+            </div>
         </div>
     )
 }

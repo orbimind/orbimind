@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
+import { Link } from 'react-router-dom'
+import Cookies from 'js-cookie'
+import axios from 'axios'
 
-import TagsList from "../Tags/TagsList";
-import './PostElement.css';
+import { Upvote } from '../../assets/Misc.jsx'
+import TagsList from "../Tags/TagsList"
+import './PostElement.css'
 
 const style = {
     link: {
@@ -116,16 +117,16 @@ export default function PostElement({ id, title, content, rating, date, user_id 
                 <button id="like" onClick={ e => createLike(e.currentTarget.id) }>
                     {
                         (likeType === "like")
-                        ?   <svg fill="#7c6aef" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240.835 240.835"><path d="M129.007 57.819c-4.68-4.68-12.499-4.68-17.191 0L3.555 165.803c-4.74 4.74-4.74 12.427 0 17.155 4.74 4.74 12.439 4.74 17.179 0l99.683-99.406 99.671 99.418c4.752 4.74 12.439 4.74 17.191 0 4.74-4.74 4.74-12.427 0-17.155L129.007 57.819z"/></svg>
-                        :   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240.835 240.835"><path d="M129.007 57.819c-4.68-4.68-12.499-4.68-17.191 0L3.555 165.803c-4.74 4.74-4.74 12.427 0 17.155 4.74 4.74 12.439 4.74 17.179 0l99.683-99.406 99.671 99.418c4.752 4.74 12.439 4.74 17.191 0 4.74-4.74 4.74-12.427 0-17.155L129.007 57.819z"/></svg>
+                        ? <Upvote fill="#7c6aef" />
+                        : <Upvote />
                     }
                 </button>
                 <span id='rating'>{ currentRating }</span>
                 <button id="dislike" onClick={ e => createLike(e.currentTarget.id) }>
                     {
                         (likeType === "dislike")
-                        ?   <svg fill="#7c6aef" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240.835 240.835"><path d="M129.007 57.819c-4.68-4.68-12.499-4.68-17.191 0L3.555 165.803c-4.74 4.74-4.74 12.427 0 17.155 4.74 4.74 12.439 4.74 17.179 0l99.683-99.406 99.671 99.418c4.752 4.74 12.439 4.74 17.191 0 4.74-4.74 4.74-12.427 0-17.155L129.007 57.819z"/></svg>
-                        :   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240.835 240.835"><path d="M129.007 57.819c-4.68-4.68-12.499-4.68-17.191 0L3.555 165.803c-4.74 4.74-4.74 12.427 0 17.155 4.74 4.74 12.439 4.74 17.179 0l99.683-99.406 99.671 99.418c4.752 4.74 12.439 4.74 17.191 0 4.74-4.74 4.74-12.427 0-17.155L129.007 57.819z"/></svg>
+                        ? <Upvote fill="#7c6aef" />
+                        : <Upvote />
                     }
                 </button>
             </div>

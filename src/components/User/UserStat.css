@@ -13,7 +13,7 @@
 .userStat > div {
 	display: inline;
 }
-.userStat > div > img {
+.userStat > div > svg {
 	width: 12px;
 	margin-right: 4px;
 }
