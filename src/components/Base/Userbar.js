@@ -35,7 +35,9 @@ export function UserButton({ username }) {
     return (
         <Link to={`/user/${ username }`} className='userBar'>
             <button>{ username }</button>
-            <img style={ style.img } src={`https://d3djy7pad2souj.cloudfront.net/avatars/${ user && user.image }`} alt="avatar" />
+            {
+                user.image && <img style={ style.img } src={`https://d3djy7pad2souj.cloudfront.net/avatars/${ user.image }`} alt="avatar" />
+            }
         </Link>
     )
 }

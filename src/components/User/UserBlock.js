@@ -56,7 +56,9 @@ export default function UserBlock({ username, logged, toSettings }) {
     return (
         <div className="userBlock">
             <div>
-                <img src={`https://d3djy7pad2souj.cloudfront.net/avatars/${ user.image }`} alt='avatar' />
+                {
+                    user.image && <img src={`https://d3djy7pad2souj.cloudfront.net/avatars/${ user.image }`} alt='avatar' />
+                }
             </div>
             <div>
                 <h2>{ username }<br/><small>{ user.name }</small></h2>

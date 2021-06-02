@@ -19,7 +19,6 @@ function deletePost(token, id){
             'Accept': 'application/json',
             'Authorization': `Bearer ${ token }`,
         },
-        data: {},
         url: `https://orbimind.herokuapp.com/api/posts/${ id }`
     };
     const promise = axios.delete(api.url, { headers: api.headers });
@@ -326,14 +325,14 @@ export default function SinglePost() {
                             {
                                 isAuthor &&
                                 <button value={ post_id } id="delete" onClick={ ownerEvents }>
-                                    <Trash fill='rgba(234, 60, 83, 0.7)' />
+                                    <Trash fill='rgba(234, 60, 83, 0.5)' />
                                 </button>
                             }
                         </div>
                     </div>
                     <div>
                         <h1>{ post.title }</h1>
-                        <span>Asked { moment(post.created_at).fromNow() } by <Link to={`/users/${ creator.id }`} className="linkUser"> { creator.username } </Link><span id="rating">{ creator.rating }</span></span>
+                        <span>Asked { moment(post.created_at).fromNow() } by <Link to={`/user/${ creator.username }`} className="linkUser"> { creator.username } </Link><span id="rating">{ creator.rating }</span></span>
                         <p>{ post.content }</p>
                         <TagsList post_id={ post_id }/>
                     </div>

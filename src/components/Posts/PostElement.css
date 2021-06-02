@@ -57,6 +57,7 @@
 }
 .postElement > div:last-child > span#postContent {
 	font-family: Roboto;
+	font-weight: 400;
 	font-size: 13px;
 	line-height: 13px;
 	color: rgba(0, 0, 0, 0.6);

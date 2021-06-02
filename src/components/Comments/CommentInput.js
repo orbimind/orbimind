@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import axios from 'axios';
+import React, { Component } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
+import { Link } from 'react-router-dom'
+import Cookies from 'js-cookie'
+import axios from 'axios'
 
-import './CommentInput.css';
+import './CommentInput.css'
 
 export default class CommentInput extends Component {
     constructor(props) {
@@ -48,7 +48,7 @@ export default class CommentInput extends Component {
             promise, 
             {
                 loading: 'Leaving your mark...',
-                success: (response) => {
+                success: () => {
                     setTimeout(() => {
                         location.reload();
                     }, 2000);

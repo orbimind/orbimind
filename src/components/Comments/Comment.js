@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
-import { Upvote } from '../../assets/Misc.jsx'
+import { Upvote, Edit, Trash } from '../../assets/Misc.jsx'
+import CommentEdit from './CommentEdit'
 
 export default function Comment({ user_id, rating, date, content, comment_id }) {
-    const [creator, setCreator] = useState([]);
-    const [likeType, setLikeType] = useState(null);
-    const [currentRating, setCurrentRating] = useState(rating);
-    const [likes, setLikes] = useState([]);
-    const user = Cookies.getJSON('user');
+    const [creator, setCreator] = useState([])
+    const [likeType, setLikeType] = useState(null)
+    const [currentRating, setCurrentRating] = useState(rating)
+    const [likes, setLikes] = useState([])
+    const [contentEditable, setContentEditable] = useState(<p>{ content }</p>)
+    const user = Cookies.getJSON('user')
+    let isAuthor = false
 
     useEffect(() => {
         let cancel;
         axios.get("https://orbimind.herokuapp.com/api/users/" + user_id, {
           cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(result => {
-            setCreator(result.data);
+            setCreator(result.data)
         });
 
-        return () => cancel(); 
+        return () => cancel()
     }, []);
 
     useEffect(() => {
@@ -100,6 +103,65 @@ export default function Comment({ user_id, rating, date, content, comment_id }) 
             }
         );
     }
+    if(user && user.id == user_id)
+            isAuthor = true
+
+    function ownerEvents(type){
+        switch(type){
+            case 'delete':
+                toast((t) => (
+                    <span>
+                        Are you sure you want to delete your comment? &nbsp;
+                        <button style={{ 
+                        padding: "6px", 
+                        backgroundColor: "#ea3c53", 
+                        color: "white",
+                        fontWeight: "500",
+                        borderRadius: "6px"
+                        }} 
+                            onClick={() => {
+                                const api = {
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Authorization': `Bearer ${ user.token }`,
+                                    },
+                                    url: `https://orbimind.herokuapp.com/api/comments/${ comment_id }`
+                                };
+                                const promise = axios.delete(api.url, { headers: api.headers });
+                            
+                                toast.promise(
+                                    promise, 
+                                    {
+                                        loading: 'Processing..',
+                                        success: () => {
+                                            setTimeout(location.reload(), 1000);
+                                            return "Deleted!";
+                                        },
+                                        error: (error) => {
+                                            return error.response.data.message;
+                                        }
+                                    }
+                                );
+                                toast.dismiss(t.id)
+                            }
+                        }>
+                        Totally, delete it
+                        </button>
+                    </span>
+                ),
+                {
+                    duration: 8000,
+                    style: {
+                        minWidth: '440px'
+                    },
+                });
+                break;
+            case 'edit':
+                setContentEditable(<CommentEdit content={ content } comment_id={ comment_id } setContentEditable={ setContentEditable } />)
+                break;
+        }
+        
+    }
 
     return (
         <div className="singleComment">
@@ -121,27 +183,20 @@ export default function Comment({ user_id, rating, date, content, comment_id }) 
                 </button>
             </div>
             <div>
-                <span>Answered by <Link className="linkUser" to={`/users/${ creator.id }`}>{ creator.username }</Link> <span id="rating">{ creator.rating }</span> { date }</span>
-                <p>{ content }</p>
-                <Toaster
-                    position="bottom-center"
-                    reverseOrder={false}
-                    toastOptions={{
-                        style: {
-                            borderRadius: '8px',
-                            backgroundColor: 'white',
-                            padding: '10px',
-                        },
-                        duration: 2000,
-                        success: {
-                            iconTheme: {
-                                primary: '#7c6aef',
-                                secondary: '#FFF',
-                            },
-                        },
-                        error: { duration: 4000 }
-                    }}
-                />
+                <span>Answered by <Link className="linkUser" to={`/user/${ creator.username }`}>{ creator.username }</Link> <span id="rating">{ creator.rating }</span> { date }</span>
+                {
+                    isAuthor &&
+                    <button style={{margin: '0 0 0 6px'}} id="edit" onClick={e => ownerEvents(e.currentTarget.id)}>
+                        <Edit width={12}/>
+                    </button>
+                }
+                {
+                    isAuthor &&
+                    <button style={{margin: '0 0 0 6px'}} id="delete" onClick={e => ownerEvents(e.currentTarget.id)}>
+                        <Trash width={12} fill='rgba(234, 60, 83, 0.5)' />
+                    </button>
+                }
+                { contentEditable }
             </div>
         </div>
     );
