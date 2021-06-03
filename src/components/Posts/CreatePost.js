@@ -26,19 +26,47 @@ class CreatePost extends Component {
             toast.promise(
                 promise, 
                 {
-                    loading: 'Posting...',
+                    loading: 'Loading...',
                     success: (response) => {
                         this.setState({
                             title: response.data.title,
                             content: response.data.content,
-                            categories: response.data.category_id
                         });
-                        return "Loaded"
                     },
                     error: (error) => {
                         return error.response.data.message
                     }
-                })
+                },
+                {
+                  success: {
+                    style: {
+                        display: 'none'
+                    },
+                  },
+                }
+            )
+            const promise2 = axios.get("https://orbimind.herokuapp.com/api/posts/" + this.post_id + "/categories");
+            toast.promise(
+                promise2, 
+                {
+                    loading: 'Loading...',
+                    success: (response) => {
+                        this.setState({
+                            categories: response.data
+                        });
+                    },
+                    error: (error) => {
+                        return error.response.data.message
+                    }
+                },
+                {
+                  success: {
+                    style: {
+                        display: 'none'
+                    },
+                  },
+                }
+            )
         }
 
         this.handleChange = this.handleChange.bind(this);

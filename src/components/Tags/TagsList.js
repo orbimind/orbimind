@@ -22,8 +22,8 @@ export default function TagsList({ post_id }) {
                 tags.map(tag => {  
                     return (
                         <TagElement
-                            key={ tag }
-                            title={ tag }
+                            key={ tag.value }
+                            title={ tag.label }
                         />
                     )
                 })
