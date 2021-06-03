@@ -72,30 +72,55 @@
 
 .singlePost > div:last-child {
 	width: calc(100% - 64px);
-	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: flex-start;
 }
-.singlePost > div:last-child > h1 {
+.singlePost > div:last-child > div:first-child {
+	width: 100%;
+	height: calc(100% - 20px);
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+.singlePost > div:last-child > div:first-child > h1 {
 	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
 	font-weight: 600;
 	font-size: 26px;
 	line-height: 32px;
 }
-.singlePost > div:last-child > * {
+.singlePost > div:last-child > div:first-child > p {
+	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 20px;
+}
+.singlePost > div:last-child > div:last-child {
+	background: #f8f7ff;
+	border-top: 1px solid #e1e4e8;
+	height: 36px;
+	width: 100%;
+	border-bottom-right-radius: 6px;
+	display: inline-flex;
+	align-items: center;
+	padding: 0 16px;
+	justify-content: space-between;
+}
+.singlePost > div:last-child > div:first-child > * {
 	margin: 6px 0;
 }
-.singlePost > div:last-child > span {
+.singlePost > div:last-child > div:last-child > span:first-child {
 	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
 	font-weight: 300;
-	font-size: 18px;
+	font-size: 14px;
 	line-height: 22px;
 	color: var(--black-07);
 	text-decoration: none;
 }
-.singlePost > div:last-child > span > span#rating {
+.singlePost > div:last-child > div:last-child > span:first-child > span#rating {
 	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
 	font-size: 12px;
 	color: var(--black-07);
@@ -103,9 +128,8 @@
 	border-radius: 4px;
 	padding: 2px 3px;
 }
-.singlePost > div:last-child > p {
-	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 20px;
+.singlePost > div:last-child > div:last-child > span:last-child {
+	font-weight: 300;
+	font-size: 13px;
+	color: var(--black-07);
 }

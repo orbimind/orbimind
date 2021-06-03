@@ -50,6 +50,8 @@ export default function Posts() {
     let queries = new URLSearchParams(currentPageUrl.slice(currentPageUrl.indexOf('?')))
 
     queries.set('category', query.get('category'))
+    query.get('order') ? queries.set('order', query.get('order')) : queries.set('order', 'date$desc')
+    queries.set('status', query.get('status'))
     queries.has('page') && queries.set('page', '1')
 
     for (const q of queries) {
@@ -76,7 +78,7 @@ export default function Posts() {
     <div className='postsRoot'>
         <div className='posts'>
             <div className='content'>
-                <FilteringBar />
+                <FilteringBar setCurrentPageUrl={ setCurrentPageUrl } />
                 <div className="postsList">
                     <PostsList posts={posts}/>
                 </div>

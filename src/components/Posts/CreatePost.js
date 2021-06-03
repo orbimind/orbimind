@@ -30,7 +30,8 @@ class CreatePost extends Component {
                     success: (response) => {
                         this.setState({
                             title: response.data.title,
-                            content: response.data.content
+                            content: response.data.content,
+                            categories: response.data.category_id
                         });
                         return "Loaded"
                     },
@@ -44,6 +45,16 @@ class CreatePost extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCategoriesChange = this.handleCategoriesChange.bind(this);
     }
+
+    // async () => {
+    //     return await Promise.all(
+    //         this.state.categories.map(
+    //             id => {
+    //                 return axios.get(`https://orbimind.herokuapp.com/api/categories/${id}`)
+    //             }
+    //         )
+    //     )
+    // }
 
     handleChange(event) {
         switch(event.target.id){
@@ -132,7 +143,7 @@ class CreatePost extends Component {
             label: category.title,
             value: category.id
         })));
-    } 
+    }
 
     render() {
         return (

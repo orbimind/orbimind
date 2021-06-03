@@ -132,7 +132,7 @@ export default function PostElement({ id, title, content, rating, date, user_id 
             </div>
             <div>
                 <h1 id="postTitle"><Link to={`/posts/${ id }`} style={ style.link }>{ title }</Link></h1>
-                <h3 id="postCreator">asked { date } by <Link className='linkUser' to={`/user/${ user.username }`}>{ user.username }</Link> { user.rating }</h3>
+                <h3 id="postCreator">asked { date } by <Link className='linkUser' to={`/user/${ user.username }`}>{ user.username }</Link> <span>{ user.rating }</span></h3>
                 <span id="postContent">{ content }</span>
                 <TagsList post_id={ id }/>
                 <Toaster

@@ -38,14 +38,9 @@
 	flex-direction: row;
 	align-items: center;
 }
-.filteringBar > div:last-child > select {
-	background: #f8f7ff;
-	border: 1px solid #e1e4e8;
+.filteringBar > div:last-child > div {
 	border-radius: 5px;
-	height: 100%;
-}
-.filteringBar > div:last-child > select:enabled {
-	outline: none;
+	width: 108px;
 }
 .filteringBar > div:last-child > span {
 	margin-left: 20px;

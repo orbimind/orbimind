@@ -4,16 +4,12 @@ import axios from 'axios';
 import TagElement from './TagElement';
 import './Tags.css';
 
-function shuffle(array) {
-    array.sort(() => Math.random() - 0.5);
-}
-
 export default function PopularTagsList() {
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
         let cancel;
-        axios.get("https://orbimind.herokuapp.com/api/categories?limit=10" , {
+        axios.get("https://orbimind.herokuapp.com/api/categories?random=10" , {
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(result => {
             setTags(result.data.map(p => p));
@@ -22,10 +18,9 @@ export default function PopularTagsList() {
         return () => cancel(); 
     }, []);
     
-    shuffle(tags);
     return (
         <div className='popularTags'>
-            <h1>Popular tags</h1>
+            <h1>Random tags</h1>
             <div>
                 { 
                     tags.map(tag => {

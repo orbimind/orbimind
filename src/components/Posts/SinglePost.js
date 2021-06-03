@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, Link, Redirect } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
+import ReactMarkdown from 'react-markdown'
 import Cookies from 'js-cookie'
 import moment from 'moment'
 import axios from 'axios'
@@ -331,10 +332,15 @@ export default function SinglePost() {
                         </div>
                     </div>
                     <div>
-                        <h1>{ post.title }</h1>
-                        <span>Asked { moment(post.created_at).fromNow() } by <Link to={`/user/${ creator.username }`} className="linkUser"> { creator.username } </Link><span id="rating">{ creator.rating }</span></span>
-                        <p>{ post.content }</p>
-                        <TagsList post_id={ post_id }/>
+                        <div>
+                            <h1>{ post.title }</h1>
+                            <div className='markdownText'><ReactMarkdown>{ post.content }</ReactMarkdown></div>
+                            <TagsList post_id={ post_id }/>
+                        </div>
+                        <div>
+                            <span>Asked { moment(post.created_at).fromNow() } by <Link to={`/user/${ creator.username }`} className="linkUser"> { creator.username } </Link><span id="rating">{ creator.rating }</span></span>
+                            <span>{ (post.created_at != post.updated_at) && 'Last updated ' + moment(post.updated_at).fromNow() }</span>
+                        </div>
                     </div>
                 </div>
                 <CommentList post_id={ post_id } />

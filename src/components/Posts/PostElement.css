@@ -55,6 +55,14 @@
 	line-height: 12px;
 	color: var(--black-accent-header);
 }
+.postElement > div:last-child > h3#postCreator > span {
+	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
+	font-size: 10px;
+	color: var(--black-07);
+	background-color: rgba(124, 106, 239, 0.3);
+	border-radius: 4px;
+	padding: 2px 3px;
+}
 .postElement > div:last-child > span#postContent {
 	font-family: Roboto;
 	font-weight: 400;
