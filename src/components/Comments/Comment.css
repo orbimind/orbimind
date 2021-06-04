@@ -48,15 +48,37 @@
 .singleComment > div:first-child > button#dislike > svg {
 	transform: matrix(1, 0, 0, -1, 0, 0);
 }
+.singleComment > div:first-child > button#checkmark > svg {
+	width: 20px;
+	margin-top: 10px;
+}
 
 .singleComment > div:last-child {
-	padding: 10px;
 	width: calc(100% - 64px);
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
-.singleComment > div:last-child > * {
-	margin: 6px 0;
+.singleComment > div:last-child > div:first-child {
+	padding: 10px;
+	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 18px;
 }
-.singleComment > div:last-child > span {
+.singleComment > div:last-child > div:last-child {
+	background: #f8f7ff;
+	border-top: 1px solid #e1e4e8;
+	height: 36px;
+	width: 100%;
+	border-bottom-right-radius: 6px;
+	display: inline-flex;
+	align-items: center;
+	padding: 12px;
+	justify-content: space-between;
+}
+.singleComment > div:last-child > div:last-child > div > span {
 	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
 	font-weight: 300;
 	font-size: 14px;
@@ -64,7 +86,7 @@
 	color: var(--black-07);
 	text-decoration: none;
 }
-.singleComment > div:last-child > span > span#rating {
+.singleComment > div:last-child > div:last-child > div > span > span#rating {
 	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
 	font-size: 12px;
 	color: var(--black-07);
@@ -72,10 +94,8 @@
 	border-radius: 4px;
 	padding: 2px 3px;
 }
-.singleComment > div:last-child > p {
-	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 18px;
-	margin-top: 10px;
+.singleComment > div:last-child > div:last-child > span {
+	font-weight: 300;
+	font-size: 13px;
+	color: var(--black-07);
 }

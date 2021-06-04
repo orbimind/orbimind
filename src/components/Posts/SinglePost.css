@@ -63,11 +63,15 @@
 	justify-content: center;
 	align-items: center;
 }
-.singlePost > div:first-child > div:last-child > button,
-#edit {
+.singlePost > div:first-child > div:last-child > button {
 	fill: rgba(165, 165, 165, 0.5);
 	width: 20px;
 	margin-top: 14px;
+}
+#delete,
+#edit {
+	margin-left: 6px;
+	fill: rgba(165, 165, 165, 0.5);
 }
 
 .singlePost > div:last-child {
@@ -92,12 +96,13 @@
 	font-size: 26px;
 	line-height: 32px;
 }
-.singlePost > div:last-child > div:first-child > p {
+.singlePost > div:last-child > div:first-child > div.markdownText {
 	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 20px;
 }
+
 .singlePost > div:last-child > div:last-child {
 	background: #f8f7ff;
 	border-top: 1px solid #e1e4e8;
@@ -112,7 +117,7 @@
 .singlePost > div:last-child > div:first-child > * {
 	margin: 6px 0;
 }
-.singlePost > div:last-child > div:last-child > span:first-child {
+.singlePost > div:last-child > div:last-child > div > span {
 	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
 	font-weight: 300;
 	font-size: 14px;
@@ -120,7 +125,7 @@
 	color: var(--black-07);
 	text-decoration: none;
 }
-.singlePost > div:last-child > div:last-child > span:first-child > span#rating {
+.singlePost > div:last-child > div:last-child > div > span > span#rating {
 	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
 	font-size: 12px;
 	color: var(--black-07);

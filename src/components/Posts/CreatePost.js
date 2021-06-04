@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import AsyncSelect from 'react-select/async';
-import makeAnimated from 'react-select/animated';
-import { withRouter } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
-import Cookies from 'js-cookie';
+import React, { Component } from 'react'
+import axios from 'axios'
+import AsyncSelect from 'react-select/async'
+import makeAnimated from 'react-select/animated'
+import { withRouter } from "react-router-dom"
+import toast, { Toaster } from 'react-hot-toast'
+import Cookies from 'js-cookie'
 
-import './CreatePost.css';
+import { Markdown } from '../../assets/Misc.jsx'
+import './CreatePost.css'
 
 const animated = makeAnimated();
 
@@ -73,16 +74,6 @@ class CreatePost extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCategoriesChange = this.handleCategoriesChange.bind(this);
     }
-
-    // async () => {
-    //     return await Promise.all(
-    //         this.state.categories.map(
-    //             id => {
-    //                 return axios.get(`https://orbimind.herokuapp.com/api/categories/${id}`)
-    //             }
-    //         )
-    //     )
-    // }
 
     handleChange(event) {
         switch(event.target.id){
@@ -188,6 +179,10 @@ class CreatePost extends Component {
                         
                         <label htmlFor="content">Content</label>
                         <textarea id="content" value={ this.state.content } onChange={ this.handleChange } placeholder="Hey! I wanted to add this block to my react app..." />
+                        <a id='markdown' href='https://guides.github.com/features/mastering-markdown/' target='_black' rel='noopener'>
+                            <Markdown /> 
+                            <span>Styling with Markdown is supported</span>
+                        </a>
 
                         <label htmlFor="categories">Select categories</label>
                         <AsyncSelect

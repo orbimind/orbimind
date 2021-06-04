@@ -54,11 +54,11 @@ export function Footer() {
                     </div>
                 </div>
                 <div>
-                    <a href='https://github.com/PAXANDDOS/orbimind-react'><Social.GitHub /></a>
-                    <a href='https://t.me/PAXANDDOS'><Social.Telegram /></a>
-                    <a href='https://www.facebook.com/paxanddos/'><Social.Facebook /></a>
-                    <a href='mailto:pashalitovka@gmail.com'><Social.Email /></a>
-                    <a href='https://github.com/PAXANDDOS/orbimind-api'>API</a>
+                    <a href='https://github.com/PAXANDDOS/orbimind-react' target='_black'><Social.GitHub /></a>
+                    <a href='https://t.me/PAXANDDOS' target='_black'><Social.Telegram /></a>
+                    <a href='https://www.facebook.com/paxanddos/' target='_black'><Social.Facebook /></a>
+                    <a href='mailto:pashalitovka@gmail.com' target='_black'><Social.Email /></a>
+                    <a href='https://github.com/PAXANDDOS/orbimind-api' target='_black'>API</a>
                 </div>
             </div>
         </div>

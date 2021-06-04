@@ -11,6 +11,7 @@ import CommentList from '../Comments/CommentList'
 import CommentInput from '../Comments/CommentInput'
 import './SinglePost.css'
 import '../Tags/Tags.css'
+import '../Markdown.css'
 
 import { Bell, Star, Edit, Trash, Upvote } from '../../assets/Misc.jsx'
 
@@ -317,18 +318,6 @@ export default function SinglePost() {
                                     :   <Star />
                                 }
                             </button>
-                            {
-                                isAuthor &&
-                                <Link to={`create/${ post_id }`} id="edit">
-                                    <Edit />
-                                </Link>
-                            }
-                            {
-                                isAuthor &&
-                                <button value={ post_id } id="delete" onClick={ ownerEvents }>
-                                    <Trash fill='rgba(234, 60, 83, 0.5)' />
-                                </button>
-                            }
                         </div>
                     </div>
                     <div>
@@ -338,13 +327,27 @@ export default function SinglePost() {
                             <TagsList post_id={ post_id }/>
                         </div>
                         <div>
-                            <span>Asked { moment(post.created_at).fromNow() } by <Link to={`/user/${ creator.username }`} className="linkUser"> { creator.username } </Link><span id="rating">{ creator.rating }</span></span>
+                            <div>
+                                <span>Asked { moment(post.created_at).fromNow() } by <Link to={`/user/${ creator.username }`} className="linkUser"> { creator.username } </Link><span id="rating">{ creator.rating }</span></span>
+                                {
+                                    isAuthor &&
+                                    <Link to={`create/${ post_id }`} id="edit">
+                                        <Edit width={12} />
+                                    </Link>
+                                }
+                                {
+                                    isAuthor &&
+                                    <button value={ post_id } id="delete" onClick={ ownerEvents }>
+                                        <Trash width={12} fill='rgba(234, 60, 83, 0.5)' />
+                                    </button>
+                                }
+                            </div>
                             <span>{ (post.created_at != post.updated_at) && 'Last updated ' + moment(post.updated_at).fromNow() }</span>
                         </div>
                     </div>
                 </div>
                 <CommentList post_id={ post_id } />
-                <CommentInput post_id={ post_id }/>
+                <CommentInput post_id={ post_id } status={ post.status }/>
                 <Toaster
                     position="bottom-center"
                     reverseOrder={false}

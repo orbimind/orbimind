@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 
+import { Markdown } from '../../assets/Misc.jsx'
 import './CommentInput.css'
 
 export default class CommentInput extends Component {
@@ -71,13 +72,23 @@ export default class CommentInput extends Component {
                     <Link to='/login'>Log in</Link>
                 </div>
             )
+        if(!this.props.status)
+            return (
+                <div className='commentInput notLogged'>
+                    <span>This post is not active. Go check the best answer!</span>
+                    <Link to='/posts'>Back to posts</Link>
+                </div>
+            )
         return (
             <div className='commentInput'>
                 <img src={`https://d3djy7pad2souj.cloudfront.net/avatars/${ this.user.image }`} alt="avatar" />
                 <form onSubmit={ this.handleSubmit }>
                     <textarea value={ this.state.content } onChange={ this.handleChange } name='content' type="text" placeholder="Enter a comment.." />
                     <div>
-                        <span>Comment as <b>{ this.user.username }</b></span>
+                        <a id='markdown' href='https://guides.github.com/features/mastering-markdown/' target='_black' rel='noopener'>
+                            <Markdown /> 
+                            <span>Styling with Markdown is supported</span>
+                        </a>
                         <input type='submit' value='Comment on this post' />
                     </div>
                 </form>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactMarkdown from 'react-markdown'
 import toast from 'react-hot-toast'
 import Cookies from 'js-cookie'
 import axios from 'axios'
@@ -68,7 +69,7 @@ export default class CommentEdit extends Component {
     }
 
     handleCancel() {
-        this.props.setContentEditable(<p>{ this.props.content }</p>)
+        this.props.setContentEditable(<ReactMarkdown>{ this.props.content }</ReactMarkdown>)
     }
 
     handleSubmit(event) {

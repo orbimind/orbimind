@@ -1,0 +1,45 @@
+.markdownText * {
+	font-family: Roboto, Signika, Arial, Helvetica, sans-serif;
+}
+.markdownText h1 {
+	font-size: 22px;
+}
+.markdownText h2 {
+	font-size: 20px;
+}
+.markdownText h3 {
+	font-size: 18px;
+}
+.markdownText h4 {
+	font-size: 16px;
+}
+.markdownText h5 {
+	font-size: 14px;
+}
+.markdownText h6 {
+	font-size: 12px;
+}
+.markdownText pre {
+	border-radius: 4px;
+	background: #f8f7ff;
+	border: 1px solid #e1e4e8;
+	padding: 4px;
+}
+.markdownText code {
+	background: #f3f1ff;
+}
+.markdownText blockquote {
+	background: #edeaff;
+	border-left: 2px solid var(--theme-purple);
+	padding: 6px;
+}
+.markdownText p {
+	margin: 6px 0;
+}
+.markdownText a {
+	color: var(--theme-purple);
+}
+.markdownText ul,
+ol {
+	margin-left: 20px;
+}

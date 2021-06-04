@@ -48,7 +48,7 @@ class FilteringBar extends Component {
         }
         switch(query.get('status')) {
             case '1':
-                selectedState = { value: 'top', label: 'Top' }
+                selectedState = { value: 'active', label: 'Active' }
                 break;
             case '0':
                 selectedState = { value: 'closed', label: 'Closed' }

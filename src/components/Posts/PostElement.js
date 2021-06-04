@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import Cookies from 'js-cookie'
+import moment from 'moment'
 import axios from 'axios'
 
-import { Upvote } from '../../assets/Misc.jsx'
+import { Upvote, CheckmarkFilled } from '../../assets/Misc.jsx'
 import TagsList from "../Tags/TagsList"
 import './PostElement.css'
 
@@ -15,17 +16,17 @@ const style = {
     }
 }
 
-export default function PostElement({ id, title, content, rating, date, user_id }) {
+export default function PostElement({ post, content }) {
     const cUser = Cookies.getJSON('user');
     const [user, setUser] = useState([]);
     const [likes, setLikes] = useState([]);
     const [likeType, setLikeType] = useState(null);
-    const [currentRating, setCurrentRating] = useState(rating);
+    const [currentRating, setCurrentRating] = useState(post.rating);
 
     useEffect(() => {
         let cancel;
 
-        axios.get("https://orbimind.herokuapp.com/api/users/" + user_id, {
+        axios.get("https://orbimind.herokuapp.com/api/users/" + post.user_id, {
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(result => {
             setUser(result.data);
@@ -38,7 +39,7 @@ export default function PostElement({ id, title, content, rating, date, user_id 
         if(cUser) {
             let cancel;
             
-            axios.get("https://orbimind.herokuapp.com/api/posts/" + id + "/like", {
+            axios.get("https://orbimind.herokuapp.com/api/posts/" + post.id + "/like", {
                 cancelToken: new axios.CancelToken(c => cancel = c)
             }).then(result => {
                 setLikes(result.data);
@@ -76,7 +77,7 @@ export default function PostElement({ id, title, content, rating, date, user_id 
             data: {
                 type: type
             },
-            url: `https://orbimind.herokuapp.com/api/posts/${ id }/like`
+            url: `https://orbimind.herokuapp.com/api/posts/${ post.id }/like`
         };
         const promise = axios.post(api.url, api.data, { headers: api.headers });
     
@@ -121,7 +122,11 @@ export default function PostElement({ id, title, content, rating, date, user_id 
                         : <Upvote />
                     }
                 </button>
-                <span id='rating'>{ currentRating }</span>
+                { 
+                    post.status 
+                    ? <span id='rating'>{ currentRating }</span>
+                    : <CheckmarkFilled id='checked' /> 
+                }
                 <button id="dislike" onClick={ e => createLike(e.currentTarget.id) }>
                     {
                         (likeType === "dislike")
@@ -131,10 +136,10 @@ export default function PostElement({ id, title, content, rating, date, user_id 
                 </button>
             </div>
             <div>
-                <h1 id="postTitle"><Link to={`/posts/${ id }`} style={ style.link }>{ title }</Link></h1>
-                <h3 id="postCreator">asked { date } by <Link className='linkUser' to={`/user/${ user.username }`}>{ user.username }</Link> <span>{ user.rating }</span></h3>
+                <h1 id="postTitle"><Link to={`/posts/${ post.id }`} style={ style.link }>{ post.title }</Link></h1>
+                <h3 id="postCreator">asked { moment(post.created_at).fromNow() } by <Link className='linkUser' to={`/user/${ user.username }`}>{ user.username }</Link> <span>{ user.rating }</span></h3>
                 <span id="postContent">{ content }</span>
-                <TagsList post_id={ id }/>
+                <TagsList post_id={ post.id }/>
                 <Toaster
                     position="bottom-center"
                     reverseOrder={false}

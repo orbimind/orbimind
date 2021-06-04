@@ -76,6 +76,25 @@ export default function UserBlock({ username, logged, toSettings }) {
                 {
                     logged && <button id='logoutButton' onClick={ logout }>Log out</button>
                 }
+                <Toaster
+                    position="bottom-center"
+                    reverseOrder={false}
+                    toastOptions={{
+                        style: {
+                            borderRadius: '8px',
+                            backgroundColor: 'white',
+                            padding: '10px',
+                        },
+                        duration: 2000,
+                        success: {
+                            iconTheme: {
+                                primary: '#7c6aef',
+                                secondary: '#FFF',
+                            },
+                        },
+                        error: { duration: 4000 }
+                    }}
+                />
             </div>
         </div>
     )
