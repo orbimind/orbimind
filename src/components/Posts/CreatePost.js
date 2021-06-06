@@ -1,107 +1,86 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import AsyncSelect from 'react-select/async'
+import React, { useEffect, useState } from 'react'
+import { useParams, useHistory } from "react-router-dom"
 import makeAnimated from 'react-select/animated'
-import { withRouter } from "react-router-dom"
 import toast, { Toaster } from 'react-hot-toast'
+import AsyncSelect from 'react-select/async'
 import Cookies from 'js-cookie'
+import axios from 'axios'
 
 import { Markdown } from '../../assets/Misc.jsx'
 import './CreatePost.css'
 
 const animated = makeAnimated();
 
-class CreatePost extends Component {
-    constructor(props) {
-        super(props);
-        this.post_id = this.props.match.params.post_id;
-        this.state = {
-            post: {},
-            title: '',
-            content: '',
-            categories: []
-        };
-
-        if(this.post_id){
-            const promise = axios.get("https://orbimind.herokuapp.com/api/posts/" + this.post_id);
+export default function CreatePost() {
+    const history = useHistory()
+    const { post_id } = useParams()
+    const [title, setTitle] = useState('')
+    const [content, setContent] = useState('')
+    const [categories, setCategories] = useState([])
+    
+    if(post_id) {
+        useEffect(() => {
+            const promise = axios.get("https://orbimind.herokuapp.com/api/posts/" + post_id);
             toast.promise(
                 promise, 
                 {
                     loading: 'Loading...',
                     success: (response) => {
-                        this.setState({
-                            title: response.data.title,
-                            content: response.data.content,
-                        });
+                        setTitle(response.data.title)
+                        setContent(response.data.content)
                     },
                     error: (error) => {
                         return error.response.data.message
                     }
                 },
                 {
-                  success: {
+                success: {
                     style: {
                         display: 'none'
                     },
-                  },
+                },
                 }
             )
-            const promise2 = axios.get("https://orbimind.herokuapp.com/api/posts/" + this.post_id + "/categories");
+            const promise2 = axios.get("https://orbimind.herokuapp.com/api/posts/" + post_id + "/categories");
             toast.promise(
                 promise2, 
                 {
                     loading: 'Loading...',
                     success: (response) => {
-                        this.setState({
-                            categories: response.data
-                        });
+                        setCategories(response.data)
                     },
                     error: (error) => {
                         return error.response.data.message
                     }
                 },
                 {
-                  success: {
+                success: {
                     style: {
                         display: 'none'
                     },
-                  },
+                },
                 }
             )
-        }
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleCategoriesChange = this.handleCategoriesChange.bind(this);
+        }, [])
     }
 
-    handleChange(event) {
-        switch(event.target.id){
+    const handleChange = e => {
+        switch(e.target.id){
             case 'title':
-                this.setState({
-                    title: event.target.value
-                });
-                break;
+                setTitle(e.target.value)
+                break
             case 'content':
-                this.setState({
-                    content: event.target.value
-                });
-                break;
+                setContent(e.target.value)
+                break
         }
     }
 
-    handleCategoriesChange = categories_new => {
-        this.setState({
-            categories: categories_new || []
-        });
-    }
+    const handleCategoriesChange = categories => setCategories(categories || [])
 
-    handleSubmit(event) {
-        event.preventDefault();
-
+    const handleSubmit = () => {
         let category_id = [];
-        for(let i = 0; i < this.state.categories.length; i++)
-            category_id.push(this.state.categories[i].value);
+        for(let i = 0; i < categories.length; i++)
+            category_id.push(categories[i].value);
 
         const api = {
             headers: {
@@ -110,14 +89,14 @@ class CreatePost extends Component {
                 'Authorization': 'Bearer '  + Cookies.getJSON('user').token
             },
             data: {
-                title: this.state.title,
-                content: this.state.content,
+                title: title,
+                content: content,
                 category_id: category_id
             },
-            url: this.post_id ? `https://orbimind.herokuapp.com/api/posts/${ this.post_id }` : "https://orbimind.herokuapp.com/api/posts"
+            url: post_id ? `https://orbimind.herokuapp.com/api/posts/${ post_id }` : "https://orbimind.herokuapp.com/api/posts"
         };
         let promise;
-        if(this.post_id)
+        if(post_id)
             promise = axios.patch(api.url, api.data, { headers: api.headers });
         else 
             promise = axios.post(api.url, api.data, { headers: api.headers });
@@ -127,10 +106,8 @@ class CreatePost extends Component {
             {
                 loading: 'Posting...',
                 success: (response) => {
-                    setTimeout(() => {
-                        location.href = `/posts/${response.data.id}`;
-                    }, 2000);
-                    if(this.post_id)
+                    setTimeout(() => history.push(`/posts/${response.data.id}`), 1500);
+                    if(post_id)
                         return 'Your post was updated!';
                     return 'Your post was created!';
                 },
@@ -154,7 +131,7 @@ class CreatePost extends Component {
         );
     }
 
-    loadOptions = async (data, callback) => {
+    const loadOptions = async (data, callback) => {
         const response = await fetch(`https://orbimind.herokuapp.com/api/categories?search=${ data }`);
         const json = await response.json();
 
@@ -164,83 +141,79 @@ class CreatePost extends Component {
         })));
     }
 
-    render() {
-        return (
-            <div className='createPostRoot'>
-                <div className='createPostBox'>
-                    {
-                        this.post_id
-                        ? <h1>Edit a post</h1>
-                        : <h1>Create a post</h1>
-                    }
-                    <form onSubmit={ this.handleSubmit }>
-                        <label htmlFor="title">Post title</label>
-                        <input id="title" value={ this.state.title } onChange={ this.handleChange } type="text" placeholder="React problem with JSX rendering..." />
-                        
-                        <label htmlFor="content">Content</label>
-                        <textarea id="content" value={ this.state.content } onChange={ this.handleChange } placeholder="Hey! I wanted to add this block to my react app..." />
-                        <a id='markdown' href='https://guides.github.com/features/mastering-markdown/' target='_black' rel='noopener'>
-                            <Markdown /> 
-                            <span>Styling with Markdown is supported</span>
-                        </a>
+    return (
+        <div className='createPostRoot'>
+            <div className='createPostBox'>
+                {
+                    post_id
+                    ? <h1>Edit a post</h1>
+                    : <h1>Create a post</h1>
+                }
+                <form onSubmit={ e => handleSubmit(e.preventDefault()) }>
+                    <label htmlFor="title">Post title</label>
+                    <input id="title" value={ title } onChange={ e => handleChange(e) } type="text" placeholder="React problem with JSX rendering..." />
+                    
+                    <label htmlFor="content">Content</label>
+                    <textarea id="content" value={ content } onChange={ e => handleChange(e) } placeholder="Hey! I wanted to add this block to my react app..." />
+                    <a id='markdown' href='https://guides.github.com/features/mastering-markdown/' target='_black' rel='noopener'>
+                        <Markdown /> 
+                        <span>Styling with Markdown is supported</span>
+                    </a>
 
-                        <label htmlFor="categories">Select categories</label>
-                        <AsyncSelect
-                            id="categories"
-                            isMulti
-                            components={animated}
-                            value={ this.state.categories }
-                            onChange={ this.handleCategoriesChange }
-                            placeholder="Type something.."
-                            loadOptions={ this.loadOptions }
-                            theme={theme => ({
-                                ...theme,
-                                colors: {
-                                    primary25: '#988af2',
-                                    primary: '#7c6aef',
-                                    neutral0: '#f2f0fe',
-                                    neutral90: 'white',
-                                    neutral80: 'rgba(24, 24, 26, 0.8)',
-                                    neutral60: '#7c6aef',
-                                    neutral50: 'rgba(24, 24, 26, 0.5)',
-                                    neutral40: '#7c6aef',
-                                    neutral30: 'rgba(24, 24, 26, 0.6)',
-                                    neutral20: 'rgba(24, 24, 26, 0.3)',
-                                    danger: '#ea3c53',
-                                    dangerLight: 'rgba(234, 60, 83, 0.2)',
-                                    neutral10: 'rgba(24, 24, 26, 0.1)'
-                                }
-                            })}
-                        />
-                        {
-                        this.post_id
-                            ? <input type='submit' value='Update post' />
-                            : <input type='submit' value='Create post' />
-                        }
-                    </form>
-                </div>
-                <Toaster
-                    position="bottom-center"
-                    reverseOrder={false}
-                    toastOptions={{
-                        style: {
-                            borderRadius: '8px',
-                            backgroundColor: 'white',
-                            padding: '10px',
-                        },
-                        duration: 2000,
-                        success: {
-                            iconTheme: {
+                    <label htmlFor="categories">Select categories</label>
+                    <AsyncSelect
+                        id="categories"
+                        isMulti
+                        components={animated}
+                        value={ categories }
+                        onChange={ categories => handleCategoriesChange(categories) }
+                        placeholder="Type something.."
+                        loadOptions={ (data, callback) => loadOptions(data, callback) }
+                        theme={theme => ({
+                            ...theme,
+                            colors: {
+                                primary25: '#988af2',
                                 primary: '#7c6aef',
-                                secondary: '#FFF',
-                            },
-                        },
-                        error: { duration: 4000 }
-                    }}
-                />
+                                neutral0: '#f2f0fe',
+                                neutral90: 'white',
+                                neutral80: 'rgba(24, 24, 26, 0.8)',
+                                neutral60: '#7c6aef',
+                                neutral50: 'rgba(24, 24, 26, 0.5)',
+                                neutral40: '#7c6aef',
+                                neutral30: 'rgba(24, 24, 26, 0.6)',
+                                neutral20: 'rgba(24, 24, 26, 0.3)',
+                                danger: '#ea3c53',
+                                dangerLight: 'rgba(234, 60, 83, 0.2)',
+                                neutral10: 'rgba(24, 24, 26, 0.1)'
+                            }
+                        })}
+                    />
+                    {
+                    post_id
+                        ? <input type='submit' value='Update post' />
+                        : <input type='submit' value='Create post' />
+                    }
+                </form>
             </div>
-        )
-    }
+            <Toaster
+                position="bottom-center"
+                reverseOrder={false}
+                toastOptions={{
+                    style: {
+                        borderRadius: '8px',
+                        backgroundColor: 'white',
+                        padding: '10px',
+                    },
+                    duration: 2000,
+                    success: {
+                        iconTheme: {
+                            primary: '#7c6aef',
+                            secondary: '#FFF',
+                        },
+                    },
+                    error: { duration: 4000 }
+                }}
+            />
+        </div>
+    )
 }
-
-export default withRouter(CreatePost);

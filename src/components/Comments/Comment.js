@@ -7,7 +7,6 @@ import moment from 'moment'
 import axios from 'axios'
 
 import { Upvote, Edit, Trash, Checkmark, CheckmarkFilled } from '../../assets/Misc.jsx'
-import CommentEdit from './CommentEdit'
 import '../Markdown.css'
 
 export default function Comment({ comment, post }) {
@@ -36,10 +35,10 @@ export default function Comment({ comment, post }) {
             axios.get("https://orbimind.herokuapp.com/api/comments/" + comment.id + "/like", {
                 cancelToken: new axios.CancelToken(c => cancel = c)
             }).then(result => {
-                setLikes(result.data);
+                setLikes(result.data)
             });
             
-            return () => cancel(); 
+            return () => cancel()
         }
     }, []);
 
@@ -48,19 +47,19 @@ export default function Comment({ comment, post }) {
             for(let i = 0; i < likes.length; i++) {
                 if(user.id == likes[i].user_id){
                     if(likes[i].type === "like")
-                        setLikeType("like");
+                        setLikeType("like")
                     else 
-                        setLikeType("dislike");
+                        setLikeType("dislike")
                 }
             }
         }
     }, [likes]);
 
     function createLike(type) {
-         const user = Cookies.getJSON('user');
+        const user = Cookies.getJSON('user')
         if(!user){
-            toast.error("You must be logged in to leave a like or dislike");
-            return;
+            toast.error("You must be logged in to leave a like or dislike")
+            return
         }
     
         const api = {
@@ -74,7 +73,7 @@ export default function Comment({ comment, post }) {
             },
             url: `https://orbimind.herokuapp.com/api/comments/${ comment.id }/like`
         };
-        const promise = axios.post(api.url, api.data, { headers: api.headers });
+        const promise = axios.post(api.url, api.data, { headers: api.headers })
     
         toast.promise(
             promise, 
@@ -94,7 +93,7 @@ export default function Comment({ comment, post }) {
                     return response.data.message
                 },
                 error: (error) => {
-                    return error.response.data.message;
+                    return error.response.data.message
                 }
             },
             {
@@ -244,7 +243,7 @@ export default function Comment({ comment, post }) {
                 {
                     post.status 
                     &&
-                    (post.user_id === user.id) &&
+                    (user && post.user_id === user.id) &&
                         <button id="checkmark" onClick={e => ownerEvents(e.currentTarget.id) }>
                             <Checkmark fill='rgba(165, 165, 165, 0.5)' id='checkmark'/>
                         </button>
@@ -275,4 +274,95 @@ export default function Comment({ comment, post }) {
             </div>
         </div>
     );
+}
+
+const styles = {
+    form: {
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    data: {
+        fontFamily: 'Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif',
+        fontWeight: '300',
+        fontSize: '14px',
+        lineHeight: '22px',
+        color: 'var(--black-07)',
+        background: '#f2f0ff',
+        borderBottom: '2px solid #e1e4e8',
+        borderRadius: '4px',
+        width: '100%',
+        padding: '4px 10px'
+    },
+    link: {
+        color: 'var(--theme-purple)',
+        fontWeight: '400',
+        backgroundColor: 'transparent',
+        cursor: 'pointer'
+    }
+}
+
+function CommentEdit(props) {
+    const [content, setContent] = useState(props.content)
+    const user = Cookies.getJSON('user')
+    let prevButton = null
+
+    const handleChange = e => setContent(e.target.value)
+    const handleButtons = e => {
+        switch(e.code){
+            case 'Enter':
+            case 'NumpadEnter':
+                if(prevButton != 'ShiftLeft' && prevButton != 'ShiftRight')
+                    handleSubmit()
+                break
+            case 'Escape':
+                handleCancel()
+                break
+        }
+        prevButton = e.code
+    }
+    const handleCancel = () => {
+        props.setContentEditable(<ReactMarkdown>{ props.content }</ReactMarkdown>)
+        return
+    }
+    const handleSubmit = () => {
+        const api = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer '  + user.token
+            },
+            data: {
+                content: content
+            },
+            url: `https://orbimind.herokuapp.com/api/comments/${ props.comment_id }`
+        };
+        const promise = axios.patch(api.url, api.data, { headers: api.headers })
+
+        toast.promise(
+            promise, 
+            {
+                loading: 'Leaving your mark...',
+                success: () => {
+                    props.setContentEditable(<p>{ content }</p>)
+                    return 'Your comment was updated!'
+                },
+                error: (error) => {
+                    if(error.response.data.errors.content)
+                        toast.error(error.response.data.errors.content[0])
+                    return error.response.data.message;
+                }
+            }
+        );
+    }
+
+    return (
+        <form style={ styles.form } onSubmit={ e => handleSubmit(e.preventDefault()) } onReset={ handleCancel } onKeyDown={ e => handleButtons(e) }>
+            <textarea style={ styles.data } value={ content } onChange={ e => handleChange(e) } name='content' type="text" placeholder="Enter a comment.." />
+            <div style={{display: 'inline', fontSize: '12px'}}>
+                Escape to <input style={ styles.link } type='reset' value='Cancel' /> • Enter to <input style={ styles.link } type='submit' value='Save' />
+            </div>
+        </form>  
+    )
 }

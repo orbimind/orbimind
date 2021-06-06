@@ -1,17 +1,17 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { Header, Footer } from './components/Base';
-import Home from './components/Home';
-import Posts from './components/Posts/Posts';
-import CreatePost from './components/Posts/CreatePost';
-import SinglePost from './components/Posts/SinglePost';
-import Tags from './components/Tags/Tags';
-import { LoginRoute, LoggedRoute, LoginHomeRoute } from './components/Routing';
-import NotFound from './components/NotFound';
-import { Login, Register, ForgotPassword } from "./components/Auth";
-import { User, UserFavorites } from './components/User';
-import UserAccount from './components/User/UserAccount';
+import { Header, Footer } from './components/Base'
+import Home from './components/Home'
+import Posts from './components/Posts/Posts'
+import CreatePost from './components/Posts/CreatePost'
+import SinglePost from './components/Posts/SinglePost'
+import Tags from './components/Tags/Tags'
+import { LoginRoute, LoggedRoute, LoginHomeRoute } from './components/Routing'
+import NotFound from './components/NotFound'
+import { Login, Register, ForgotPassword, ResetPassword } from "./components/Auth"
+import { User, UserFavorites } from './components/User'
+import UserAccount from './components/User/UserAccount'
 
 export default function App() {
   return (
@@ -29,9 +29,10 @@ export default function App() {
         <Route exact path='/user/:username/favorites' component={ UserFavorites } />
         <LoggedRoute exact path='/account'> <UserAccount /> </LoggedRoute>
 
-        <LoginRoute path='/login'> <Login /> </LoginRoute>
-        <LoginRoute path='/register'> <Register /> </LoginRoute>
-        <LoginRoute path='/forgot-password'> <ForgotPassword /> </LoginRoute>
+        <LoginRoute exact path='/login'> <Login /> </LoginRoute>
+        <LoginRoute exact path='/register'> <Register /> </LoginRoute>
+        <LoginRoute exact path='/forgot-password'> <ForgotPassword /> </LoginRoute>
+        <LoginRoute exact path='/forgot-password/:token'> <ResetPassword /> </LoginRoute>
 
         <Route path="*" component={ NotFound } />
       </Switch>

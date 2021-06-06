@@ -1,48 +1,33 @@
-import React, { Component } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import axios from 'axios';
+import React, { useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
+import { Link, useParams, useHistory } from 'react-router-dom'
+import Cookies from 'js-cookie'
+import axios from 'axios'
 
-import { Logo } from '../../assets/Brand.jsx';
-import './Auth.css';
+import { Logo } from '../../assets/Brand.jsx'
+import './Auth.css'
 
-export class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: '',
-            password: ''
-        };
-    
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+export function Login() {
+    const history = useHistory()
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
-    handleChange(event) {
-        switch(event.target.name){
-            case 'username':
-                this.setState({
-                    username: event.target.value
-                });
-                break;
-            case 'password':
-                this.setState({
-                    password: event.target.value
-                });
-                break;
+    const handleChange = e => {
+        switch(e.target.name){
+            case 'username': setUsername(e.target.value); break
+            case 'password': setPassword(e.target.value); break
         }
     }
-    
-    handleSubmit(event) {
+
+    const handleSubmit = () => {
         const api = {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
             data: {
-                username: this.state.username,
-                password: this.state.password
+                username: username,
+                password: password
             },
             url: "https://orbimind.herokuapp.com/api/auth/login"
         };
@@ -62,12 +47,9 @@ export class Login extends Component {
                         token: response.data.token,
                     }, { 
                         expires: (response.data.expires_in / 86400),
-                        // secure: true,
                         sameSite: 'strict'
                     });
-                    setTimeout(() => {
-                        location.href = '/posts';
-                    }, 1000);
+                    setTimeout(() => history.push('/posts'), 1500);
                     return response.data.message;
                 },
                 error: (error) => {
@@ -83,104 +65,72 @@ export class Login extends Component {
                 }
             }
         );
-        
-        event.preventDefault();
     }
 
-    render() {
-
-        return (
-            <div className="authScreen">
-                <Logo />
-                <h1>Welcome back!</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" placeholder="Enter your username" name="username" value={this.state.username} onChange={this.handleChange} required />
-                    <input type="password" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} required />
-                    <div><Link to="/forgot-password" id="forgot">Forgot password?</Link></div>
-                    <input type="submit" value="Log in" />
-                    <span>Not a member yet? <Link to="/register">Sing up</Link>!</span>
-                </form>
-                <Toaster
-                    position="bottom-center"
-                    reverseOrder={false}
-                    toastOptions={{
-                        style: {
-                            borderRadius: '8px',
-                            backgroundColor: 'white',
-                            padding: '10px',
+    return (
+        <div className="authScreen">
+            <Logo />
+            <h1>Welcome back!</h1>
+            <form onSubmit={ e => handleSubmit(e.preventDefault()) }>
+                <input type="text" placeholder="Enter your username" name="username" value={ username } onChange={ handleChange } required />
+                <input type="password" placeholder="Enter your password" name="password" value={ password } onChange={ handleChange } required />
+                <div><Link to="/forgot-password" id="forgot">Forgot password?</Link></div>
+                <input type="submit" value="Log in" />
+                <span>Not a member yet? <Link to="/register">Sing up</Link>!</span>
+            </form>
+            <Toaster
+                position="bottom-center"
+                reverseOrder={false}
+                toastOptions={{
+                    style: {
+                        borderRadius: '8px',
+                        backgroundColor: 'white',
+                        padding: '10px',
+                    },
+                    duration: 2000,
+                    success: {
+                        iconTheme: {
+                            primary: '#7c6aef',
+                            secondary: '#FFF',
                         },
-                        duration: 2000,
-                        success: {
-                            iconTheme: {
-                                primary: '#7c6aef',
-                                secondary: '#FFF',
-                            },
-                        },
-                        error: { duration: 4000 }
-                    }}
-                />
-            </div>
-        )
-    }
+                    },
+                    error: { duration: 4000 }
+                }}
+            />
+        </div>
+    )
 }
 
-export class Register extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: '',
-            name: '',
-            email: '',
-            password: '',
-            confirm_password: ''
-        };
-    
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+export function Register() {
+    const history = useHistory()
+    const [username, setUsername] = useState('')
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [password_confirmation, setPasswordConfirmation] = useState('')
 
-    handleChange(event) {
-        switch(event.target.name){
-            case 'username':
-                this.setState({
-                    username: event.target.value
-                });
-                break;
-            case 'name':
-                this.setState({
-                    name: event.target.value
-                });
-                break;
-            case 'email':
-                this.setState({
-                    email: event.target.value
-                });
-                break;
-            case 'password':
-                this.setState({
-                    password: event.target.value
-                });
-                break;
-            case 'confirm_password':
-                this.setState({
-                    confirm_password: event.target.value
-                });
-                break;
+    const handleChange = e => {
+        switch(e.target.name){
+            case 'username': setUsername(e.target.value); break
+            case 'name': setName(e.target.value); break
+            case 'email': setEmail(e.target.value); break
+            case 'password': setPassword(e.target.value); break
+            case 'password_confirmation': setPasswordConfirmation(e.target.value); break
         }
     }
-    
-    handleSubmit(event) {
+
+    const handleSubmit = () => {
         const api = {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
             data: {
-                username: this.state.username,
-                name: this.state.name,
-                email: this.state.email,
-                password: this.state.password,
-                password_confirmation: this.state.confirm_password
+                username: username,
+                name: name,
+                email: email,
+                password: password,
+                password_confirmation: password_confirmation
             },
             url: "https://orbimind.herokuapp.com/api/auth/register"
         };
@@ -191,10 +141,8 @@ export class Register extends Component {
             {
                 loading: 'Registering...',
                 success: (response) => {
-                    setTimeout(() => {
-                        location.href = '/login';
-                    }, 2000);
-                    return response.data.message;
+                    setTimeout(() => history.push('/login'), 1500)
+                    return response.data.message
                 },
                 error: (error) => {
                     if(error.response.data.errors) {
@@ -214,81 +162,65 @@ export class Register extends Component {
                             for(let i = 0; i < error.response.data.errors.password.length; i++)
                                 toast.error(error.response.data.errors.password[i])
                     }
-                    return error.response.data.message;
+                    return error.response.data.message
                 }
             }
         );
-
-        event.preventDefault();
     }
 
-    render() {
-        return (
-            <div className="authScreen">
-                <img src={logo} alt='logo' />
-                <h1>Become a part!</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" value={this.state.username} onChange={this.handleChange} name="username" placeholder="Enter your username" required/>
-                    <input type="text" value={this.state.name} onChange={this.handleChange} name="name" placeholder="Enter your name" required/>
-                    <input type="email" value={this.state.email} onChange={this.handleChange} name="email" placeholder="Enter your email" required/>
-                    <input type="password" value={this.state.password} onChange={this.handleChange} name="password" placeholder="Enter your password" required/>
-                    <input type="password" value={this.state.confirm_password} onChange={this.handleChange} name="confirm_password" placeholder="Repeat your password" required/>
-                    <input type="submit" value="Become a part" />
-                    <span>Already registered? <Link to="/login">Log in</Link>!</span>
-                </form>
-                <Toaster
-                    position="bottom-center"
-                    reverseOrder={false}
-                    toastOptions={{
-                        style: {
-                            borderRadius: '8px',
-                            backgroundColor: 'white',
-                            padding: '10px',
+    return (
+        <div className="authScreen">
+            <Logo />
+            <h1>Become a part!</h1>
+            <form onSubmit={ e => handleSubmit(e.preventDefault()) }>
+                <input type="text" value={ username } onChange={ handleChange } name="username" placeholder="Enter your username" required/>
+                <input type="text" value={ name } onChange={ handleChange } name="name" placeholder="Enter your name" required/>
+                <input type="email" value={ email } onChange={ handleChange } name="email" placeholder="Enter your email" required/>
+                <input type="password" value={ password } onChange={ handleChange } name="password" placeholder="Enter your password" required/>
+                <input type="password" value={ password_confirmation } onChange={ handleChange } name="password_confirmation" placeholder="Repeat your password" required/>
+                <input type="submit" value="Become a part" />
+                <span>Already registered? <Link to="/login">Log in</Link>!</span>
+            </form>
+            <Toaster
+                position="bottom-center"
+                reverseOrder={false}
+                toastOptions={{
+                    style: {
+                        borderRadius: '8px',
+                        backgroundColor: 'white',
+                        padding: '10px',
+                    },
+                    duration: 2000,
+                    success: {
+                        iconTheme: {
+                            primary: '#7c6aef',
+                            secondary: '#FFF',
                         },
-                        duration: 2000,
-                        success: {
-                            iconTheme: {
-                                primary: '#7c6aef',
-                                secondary: '#FFF',
-                            },
-                        },
-                        error: { duration: 4000 }
-                    }}
-                />
-            </div>
-        )
-    }
+                    },
+                    error: { duration: 4000 }
+                }}
+            />
+        </div>
+    )
 }
 
-export class ForgotPassword extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: ''
-        };
-    
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+export function ForgotPassword() {
+    const [email, setEmail] = useState('')
 
-    handleChange(event) {
-        this.setState({
-            email: event.target.value
-        });
-    }
-    
-    handleSubmit(event) {
+    const handleChange = event => setEmail(event.target.value)
+
+    const handleSubmit = () => {
         const api = {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
             data: {
-                email: this.state.email
+                email: email
             },
             url: "https://orbimind.herokuapp.com/api/auth/password-reset"
         };
-        const promise = axios.post(api.url, api.data, { headers: api.headers });
+        const promise = axios.post(api.url, api.data, { headers: api.headers })
 
         toast.promise(
             promise, 
@@ -304,40 +236,124 @@ export class ForgotPassword extends Component {
                     return error.response.data.message;
                 }
             }
-        );
-
-        event.preventDefault();
-    }
-    render() {
-        return (
-            <div className="authScreen">
-                <img src={logo} alt='logo' />
-                 <h1>Let's get your password back!</h1>
-                 <form onSubmit={this.handleSubmit}>
-                     <input type="email" value={this.state.email} onChange={this.handleChange} placeholder="Enter your email" required />
-                     <input type="submit" value="Send email" />
-                     <span><Link to="/login">Back</Link></span>
-                 </form>
-                 <Toaster
-                    position="bottom-center"
-                    reverseOrder={false}
-                    toastOptions={{
-                        style: {
-                            borderRadius: '8px',
-                            backgroundColor: 'white',
-                            padding: '10px',
-                        },
-                        duration: 2000,
-                        success: {
-                            iconTheme: {
-                                primary: '#7c6aef',
-                                secondary: '#FFF',
-                            },
-                        },
-                        error: { duration: 4000 }
-                    }}
-                />
-            </div>
         )
     }
+
+    return (
+        <div className="authScreen">
+            <Logo />
+            <h1>Let's get your password back!</h1>
+            <form onSubmit={ e => handleSubmit(e.preventDefault()) }>
+                <input type="email" value={ email } onChange={ handleChange } placeholder="Enter your email" required />
+                <input type="submit" value="Send email" />
+                <span><Link to="/login">Back</Link></span>
+            </form>
+            <Toaster
+                position="bottom-center"
+                reverseOrder={false}
+                toastOptions={{
+                    style: {
+                        borderRadius: '8px',
+                        backgroundColor: 'white',
+                        padding: '10px',
+                    },
+                    duration: 2000,
+                    success: {
+                        iconTheme: {
+                            primary: '#7c6aef',
+                            secondary: '#FFF',
+                        },
+                    },
+                    error: { duration: 4000 }
+                }}
+            />
+        </div>
+    )
+}
+
+export function ResetPassword() {
+    const history = useHistory()
+    const { token } = useParams()
+    const [password, setPassword] = useState('')
+    const [password_confirmation, setPasswordConfirmation] = useState('')
+
+    const onChange = (event) => {
+        switch(event.target.id) {
+            case 'password':
+                setPassword(event.target.value)
+                break;
+            case 'password_c':
+                setPasswordConfirmation(event.target.value)
+                break;
+        }
+    };
+
+    const onSubmit = () => {
+        const api = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            data: {
+                password: password,
+                password_confirmation: password_confirmation
+            },
+            url: "https://orbimind.herokuapp.com/api/auth/password-reset/" + token
+        };
+        const promise = axios.post(api.url, api.data, { headers: api.headers });
+
+        toast.promise(
+            promise, 
+            {
+                loading: 'Updating..',
+                success: (response) => {
+                    setTimeout(() => history.push('/login'), 1500)
+                    return response.data.message
+                },
+                error: (error) => {
+                    if(error.response.data.errors) {
+                        if(error.response.data.errors.password)
+                            for(let i = 0; i < error.response.data.errors.password.length; i++)
+                                toast.error(error.response.data.errors.password[i])
+                        if(error.response.data.errors.password_confirmation)
+                            for(let i = 0; i < error.response.data.errors.password_confirmation.length; i++)
+                                toast.error(error.response.data.errors.password_confirmation[i])
+                    }
+                    return error.response.data.message;
+                }
+            }
+        );
+    }
+
+    return (
+        <div className="authScreen">
+            <Logo />
+            <h1>Reset password</h1>
+            <form onSubmit={ e => onSubmit(e.preventDefault()) }>
+                <input type="password" id='password' value={ password } onChange={ onChange } placeholder="Enter your new password" required />
+                <input type="password" id='password_c' value={ password_confirmation } onChange={ onChange } placeholder="Repeat your password" required />
+                <input type="submit" value="Update password" />
+                <span><Link to="/login">Back</Link></span>
+            </form>
+            <Toaster
+                position="bottom-center"
+                reverseOrder={false}
+                toastOptions={{
+                    style: {
+                        borderRadius: '8px',
+                        backgroundColor: 'white',
+                        padding: '10px',
+                    },
+                    duration: 2000,
+                    success: {
+                        iconTheme: {
+                            primary: '#7c6aef',
+                            secondary: '#FFF',
+                        },
+                    },
+                    error: { duration: 4000 }
+                }}
+            />
+        </div>
+    )
 }
