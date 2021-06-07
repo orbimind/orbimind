@@ -23,19 +23,28 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	min-width: 400px;
 }
 .authScreen > form > input {
 	background: #fff;
 	box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.15);
 	border-radius: 8px;
-	border-bottom: 1px solid #e1e4e8;
+	border-bottom: 2px solid #e1e4e8;
 	outline: none;
-	width: 430px;
 	height: 40px;
 	margin: 10px 0;
 	padding: 0 14px;
 	font-weight: 400;
 	font-size: 14px;
+	transition: var(--transition-default);
+	transition-property: box-shadow, border-color;
+}
+.authScreen > form > input:hover {
+	box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.08);
+	border-color: #e7dcfc;
+}
+.authScreen > form > input:focus {
+	border-color: var(--theme-purple);
 }
 .authScreen > form > input[type="submit"] {
 	width: 170px;
@@ -46,6 +55,11 @@
 	font-weight: 600;
 	font-size: 16px;
 	cursor: pointer;
+	transition: var(--transition-default);
+	transition-property: width;
+}
+.authScreen > form > input[type="submit"]:hover {
+	width: 150px;
 }
 .authScreen > form > div {
 	width: 100%;
@@ -58,6 +72,11 @@
 	line-height: 15px;
 	color: #7c6aef;
 	text-decoration: none;
+	transition: var(--transition-default);
+	transition-property: text-decoration;
+}
+.authScreen > form > div > #forgot:hover {
+	text-decoration: underline;
 }
 .authScreen > form > span {
 	font-weight: 400;
@@ -69,4 +88,9 @@
 	text-decoration: none;
 	color: #7c6aef;
 	font-weight: 700;
+	transition: var(--transition-default);
+	transition-property: text-decoration;
+}
+.authScreen > form > span > a:hover {
+	text-decoration: underline;
 }

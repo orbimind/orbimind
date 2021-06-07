@@ -7,39 +7,43 @@ import FilteringBar from '../Filters'
 import Preview from '../Base/Preview.js'
 import Pagination from '../Pagination'
 import PostsList from './PostsList'
+import { PostLoading } from '../Loading'
+import '../Animations.css'
 import './Posts.css'
 
 export default function Posts() {
   const location = useLocation()
-  const [posts, setPosts] = useState([]);
-  const [query, setQuery] = useState(new URLSearchParams(useLocation().search));
-  let searchValue = '&search=';
+  const [posts, setPosts] = useState([])
+  const [query, setQuery] = useState(new URLSearchParams(useLocation().search))
+  const [loading, setLoading] = useState(true)
+  let searchValue = '&search='
   if(query.has('search'))
-    searchValue = '&search=' + query.get('search');
-  const [currentPageUrl, setCurrentPageUrl] = useState("https://orbimind.herokuapp.com/api/posts?page=1" + "&category=" + query.get("category") + "&order=date$desc" + searchValue);
-  const [nextPageUrl, setNextPageUrl] = useState();
-  const [prevPageUrl, setPrevPageUrl] = useState();
-  const params = new URLSearchParams('?' + currentPageUrl.split('?')[1]);
-  let next = +params.get('page') + 1;
-  let prev = +params.get('page') - 1;
-  let title = "All posts";
+    searchValue = '&search=' + query.get('search')
+  const [currentPageUrl, setCurrentPageUrl] = useState("https://orbimind.herokuapp.com/api/posts?page=1" + "&category=" + query.get("category") + "&order=date$desc" + searchValue)
+  const [nextPageUrl, setNextPageUrl] = useState()
+  const [prevPageUrl, setPrevPageUrl] = useState()
+  const params = new URLSearchParams('?' + currentPageUrl.split('?')[1])
+  let next = +params.get('page') + 1
+  let prev = +params.get('page') - 1
+  let title = "All posts"
   if(query.get("category") !== null)
-    title = query.get("category");
+    title = query.get("category")
 
   useEffect(() => {
-    let cancel;
-    let queryCategory = query.get("category");
+    let cancel
+    let queryCategory = query.get("category")
 
     axios.get(currentPageUrl, {
       cancelToken: new axios.CancelToken(c => cancel = c)
     }).then(result => {
-      setNextPageUrl("https://orbimind.herokuapp.com/api/posts?page=" + next + "&category=" + queryCategory + "&order=date$desc");
-      setPrevPageUrl("https://orbimind.herokuapp.com/api/posts?page=" + prev + "&category=" + queryCategory + "&order=date$desc");
-      setPosts(result.data.map(p => p));
+      setNextPageUrl("https://orbimind.herokuapp.com/api/posts?page=" + next + "&category=" + queryCategory + "&order=date$desc")
+      setPrevPageUrl("https://orbimind.herokuapp.com/api/posts?page=" + prev + "&category=" + queryCategory + "&order=date$desc")
+      setPosts(result.data.map(p => p))
+      setLoading(false)
     })
 
     return () => cancel();
-  }, [currentPageUrl]);
+  }, [currentPageUrl])
 
   useEffect(() => {
     setQuery(new URLSearchParams(location.search.slice(1)))
@@ -66,29 +70,41 @@ export default function Posts() {
   }, [query])
 
   function gotoNextPage() {
-    setCurrentPageUrl(nextPageUrl);
+    setCurrentPageUrl(nextPageUrl)
   }
   function gotoPrevPage() {
-    setCurrentPageUrl(prevPageUrl);
+    setCurrentPageUrl(prevPageUrl)
   }
 
   return (
     <>
     <Preview title={title}/>
     <div className='postsRoot'>
-        <div className='posts'>
+        <div className='posts fadeIn'>
             <div className='content'>
                 <FilteringBar setCurrentPageUrl={ setCurrentPageUrl } />
                 <div className="postsList">
-                    <PostsList posts={posts}/>
+                    {
+                      loading && <PostLoading />
+                    }
+                    { 
+                      posts.length 
+                      ? <PostsList posts={posts}/>
+                      : loading ? null : <p style={{width:'100%', height:'200px', display:'grid', placeItems:'center'}}>No posts here. Be the first to ask!</p>
+                    }
                 </div>
-                <Pagination 
+                { 
+                  posts.length ? 
+                  <Pagination
                     gotoNextPage={gotoNextPage}
                     gotoPrevPage={gotoPrevPage}
                     currentPage={params.get('page')}
-                />
+                    isNext={posts.length >= 10 ? true : false }
+                  />
+                  : null
+                }
             </div>
-            <PopularTagsList />
+            <PopularTagsList  />
         </div>
     </div>
     </>

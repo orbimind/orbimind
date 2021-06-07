@@ -50,8 +50,15 @@
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
 	padding-left: 10px;
 	font-size: 0.98rem;
+	transition: var(--transition-default);
+	transition-property: border;
+}
+.searchBar > input:focus {
+	border-bottom: 1px solid var(--theme-purple);
 }
 .searchBar > input::placeholder {
 	font-size: 0.9rem;
@@ -66,6 +73,11 @@
 	text-decoration: none;
 	cursor: pointer;
 	color: black;
+	transition: var(--transition-default);
+	transition-property: background-color;
+}
+.link:hover {
+	background-color: #f2f0fe;
 }
 .searchBar > .link > svg {
 	width: 100%;

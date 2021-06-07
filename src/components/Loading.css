@@ -1,0 +1,73 @@
+div.postsLoading {
+	width: 100%;
+	min-height: fit-content;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	opacity: 1;
+	animation: pulse 1.8s ease infinite;
+}
+div.postsLoading > div {
+	width: 49%;
+	height: 150px;
+	background: rgba(124, 106, 239, 0.3);
+	box-shadow: var(--shadow-default);
+	border-radius: 6px;
+	margin-top: 20px;
+}
+
+div.tagsLoading {
+	display: flex;
+	flex-direction: column;
+}
+div.tagsLoading > div {
+	width: 80px;
+	height: 24px;
+	background-color: rgba(124, 106, 239, 0.3);
+	border-radius: 3px;
+	padding: 0 10px;
+	margin-bottom: 14px;
+	animation: pulseReverse 1.8s ease infinite;
+}
+
+div.alltagsLoading {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 100%;
+}
+div.alltagsLoading > div {
+	width: 49%;
+	min-height: 100px;
+	background-color: white;
+	box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.1);
+	border-radius: 6px;
+	margin-top: 20px;
+	padding: 20px;
+	animation: pulseReverse 1.8s ease infinite;
+}
+
+@keyframes pulse {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes pulseReverse {
+	0% {
+		opacity: 0.5;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.5;
+	}
+}

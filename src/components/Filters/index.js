@@ -77,7 +77,7 @@ export default function FilteringBar({ username, favorite, noFilters }) {
     }
 
     return (
-        <div className='filteringBar'>
+        <div className='filteringBar unselectable'>
             {
                 username 
                 ?

@@ -9,8 +9,8 @@ import axios from 'axios'
 import TagsList from '../Tags/TagsList'
 import CommentList from '../Comments/CommentList'
 import CommentInput from '../Comments/CommentInput'
+import '../Animations.css'
 import './SinglePost.css'
-import '../Tags/Tags.css'
 import '../Markdown.css'
 
 import { Bell, Star, Edit, Trash, Upvote } from '../../assets/Misc.jsx'
@@ -286,7 +286,7 @@ export default function SinglePost() {
                 <div className='singlePost'>
                     <div>
                         <div>
-                            <button id="like" onClick={e => createLike(e.currentTarget.id)}>
+                            <button id="like" className='fadeIn' onClick={e => createLike(e.currentTarget.id)}>
                                 {
                                     (likeType === "like")
                                     ?   <Upvote fill='#7c6aef' />
@@ -294,7 +294,7 @@ export default function SinglePost() {
                                 }
                             </button>
                             <span id='rating'>{ currentRating }</span>
-                            <button id="dislike" onClick={e => createLike(e.currentTarget.id)}>
+                            <button id="dislike" className='fadeIn' onClick={e => createLike(e.currentTarget.id)}>
                                 {
                                     (likeType === "dislike")
                                     ?   <Upvote fill='#7c6aef' />
@@ -303,7 +303,7 @@ export default function SinglePost() {
                             </button>
                         </div>
                         <div>
-                            <button id="subscribe" onClick={e => handleEvents(e.currentTarget.id)}>
+                            <button id="subscribe" className='fadeIn' onClick={e => handleEvents(e.currentTarget.id)}>
                                 {
                                     subscription
                                     ?   <Bell fill='#7c6aef'/>
@@ -311,7 +311,7 @@ export default function SinglePost() {
 
                                 }
                             </button>
-                            <button id="favorite" onClick={e => handleEvents(e.currentTarget.id)}>
+                            <button id="favorite" className='fadeIn' onClick={e => handleEvents(e.currentTarget.id)}>
                                 {
                                     favorite
                                     ?   <Star fill='#ffd338'/>
@@ -322,11 +322,11 @@ export default function SinglePost() {
                     </div>
                     <div>
                         <div>
-                            <h1>{ post.title }</h1>
-                            <div className='markdownText'><ReactMarkdown>{ post.content }</ReactMarkdown></div>
+                            <h1 className='fadeInDelayed'>{ post.title }</h1>
+                            <div className='markdownText fadeInDelayed'><ReactMarkdown>{ post.content }</ReactMarkdown></div>
                             <TagsList post_id={ post_id }/>
                         </div>
-                        <div>
+                        <div className='fadeIn'>
                             <div>
                                 <span>Asked { moment(post.created_at).fromNow() } by <Link to={`/user/${ creator.username }`} className="linkUser"> { creator.username } </Link><span id="rating">{ creator.rating }</span></span>
                                 {

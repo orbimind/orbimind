@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import AllTagsList from './AllTagsList';
-import Preview from '../Base/Preview';
-import './Tags.css';
+import AllTagsList from './AllTagsList'
+import Preview from '../Base/Preview'
+import './Tags.css'
 
 export default function Tags() {
-    let title = "All tags";
+    let title = "All tags"
 
     return (
         <>

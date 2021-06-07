@@ -1,0 +1,93 @@
+.popTop {
+	animation: popTop 0.3s ease forwards;
+	opacity: 0;
+}
+@keyframes popTop {
+	0% {
+		opacity: 0;
+		transform: translateY(-100%);
+	}
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+.fadeIn {
+	animation: fadeIn 0.4s ease forwards;
+	opacity: 0;
+}
+.fadeInDelayed {
+	animation: fadeIn 0.4s ease forwards;
+	animation-delay: 250ms;
+	opacity: 0;
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.widthUpAuth {
+	animation: widthUpAuth 0.3s ease forwards;
+	width: 0;
+}
+@keyframes widthUpAuth {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 430px;
+	}
+}
+.listPopInSideways {
+	opacity: 0;
+	animation: 0.5s listPopInSideways ease forwards;
+	animation-delay: calc(var(--order) * 50ms);
+}
+@keyframes listPopInSideways {
+	0% {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+	20% {
+		opacity: 0;
+		transform: translateX(-60%);
+	}
+	70% {
+		opacity: 0.2;
+		transform: translateX(10%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+.listPopInUnder {
+	opacity: 0;
+	animation: 0.5s listPopInUnder ease forwards;
+	animation-delay: calc(var(--order) * 100ms);
+}
+@keyframes listPopInUnder {
+	0% {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	20% {
+		opacity: 0;
+		transform: translateY(60%);
+	}
+	70% {
+		opacity: 0.2;
+		transform: translateY(-10%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

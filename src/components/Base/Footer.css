@@ -53,6 +53,11 @@
 	color: var(--white);
 	text-decoration: none;
 	opacity: 1;
+	transition: var(--transition-default);
+	transition-property: text-decoration;
+}
+.footer > div:first-child > div > span:last-child > a:hover {
+	text-decoration: underline;
 }
 
 .footer > div:nth-child(2) {
@@ -61,6 +66,11 @@
 }
 .footer > div:nth-child(2) > * {
 	margin: 0 6px;
+	transition: var(--transition-default);
+	transition-property: transform;
+}
+.footer > div:nth-child(2) > *:hover {
+	transform: scale(1.1);
 }
 .footer > div:nth-child(2) > a {
 	width: 20px;

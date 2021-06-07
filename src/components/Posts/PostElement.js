@@ -8,6 +8,7 @@ import axios from 'axios'
 import { Upvote, CheckmarkFilled } from '../../assets/Misc.jsx'
 import TagsList from "../Tags/TagsList"
 import './PostElement.css'
+import '../Animations.css'
 
 const style = {
     link: {
@@ -113,7 +114,7 @@ export default function PostElement({ post, content }) {
     }
 
     return (
-       <div className='postElement'>
+       <div className='postElement fadeInDelayed'>
             <div>
                 <button id="like" onClick={ e => createLike(e.currentTarget.id) }>
                     {

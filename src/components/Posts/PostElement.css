@@ -26,6 +26,11 @@
 .postElement > div:first-child > button {
 	fill: rgba(165, 165, 165, 0.5);
 	width: 20px;
+	transition: var(--transition-default);
+	transition-property: fill;
+}
+.postElement > div:first-child > button:hover {
+	fill: rgba(165, 165, 165, 0.3);
 }
 .postElement > div:first-child > button#dislike > svg {
 	transform: matrix(1, 0, 0, -1, 0, 0);
@@ -66,6 +71,9 @@
 	background-color: rgba(124, 106, 239, 0.3);
 	border-radius: 4px;
 	padding: 2px 3px;
+}
+.postElement > div:last-child > h3#postCreator > a:hover {
+	text-decoration: underline;
 }
 .postElement > div:last-child > span#postContent {
 	font-family: Roboto;

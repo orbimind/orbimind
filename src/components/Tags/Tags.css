@@ -68,4 +68,9 @@
 	text-decoration: none;
 	margin-right: 6px;
 	color: #0b090c;
+	transition: var(--transition-default);
+	transition-property: padding;
+}
+.tagButton:hover {
+	padding: 0 12px;
 }

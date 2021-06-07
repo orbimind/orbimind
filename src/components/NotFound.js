@@ -40,7 +40,7 @@ const style = {
 
 export default function NotFound() {
     return (
-        <div style={style.div}>
+        <div style={style.div} className='unselectable'>
             <ErrorPage width={400} height={400} />
             <span style={style.error}>Error 404</span>
             <h1 style={style.h1}>Looks like you've got lost</h1>

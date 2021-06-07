@@ -13,8 +13,10 @@
 	--black-accent-paragraph: #484848;
 	--black-svg: #1a1918;
 	--theme-purple: #7c6aef;
+	--theme-purple-darken: #7162d3;
 	--shadow-default: 0px 4px 17px rgba(0, 0, 0, 0.1);
 	--shadow-darken: 0px 0px 20px rgba(0, 0, 0, 0.25);
+	--transition-default: 0.1s cubic-bezier(1, 0.3, 0.51, 0.6);
 }
 
 * {
@@ -70,6 +72,7 @@ body {
 	background-color: var(--white-accent);
 	overflow-x: hidden;
 	overflow-y: scroll;
+	scroll-behavior: smooth;
 }
 ::-webkit-scrollbar {
 	width: 0;

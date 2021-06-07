@@ -7,6 +7,7 @@ import moment from 'moment'
 import axios from 'axios'
 
 import { Upvote, Edit, Trash, Checkmark, CheckmarkFilled } from '../../assets/Misc.jsx'
+import '../Animations.css'
 import '../Markdown.css'
 
 export default function Comment({ comment, post }) {
@@ -216,7 +217,7 @@ export default function Comment({ comment, post }) {
     }
 
     return (
-        <div className="singleComment">
+        <div className="singleComment listPopInUnder" style={{'--order': comment.id}}>
             <div>
                 <button id="like" onClick={ e => createLike(e.currentTarget.id) }>
                 {

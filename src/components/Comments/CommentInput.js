@@ -5,6 +5,7 @@ import Cookies from 'js-cookie'
 import axios from 'axios'
 
 import { Markdown } from '../../assets/Misc.jsx'
+import '../Animations.css'
 import './CommentInput.css'
 
 export default function CommentInput({ post_id, status }) {
@@ -59,7 +60,7 @@ export default function CommentInput({ post_id, status }) {
             </div>
         )
     return (
-        <div className='commentInput'>
+        <div className='commentInput listPopInUnder'>
             <img src={`https://d3djy7pad2souj.cloudfront.net/avatars/${ user.image }`} alt="avatar" />
             <form onSubmit={ e => handleSubmit(e.preventDefault()) }>
                 <textarea value={ content } onChange={ e => handleChange(e.target.value) } name='content' type="text" placeholder="Enter a comment.." />

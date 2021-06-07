@@ -37,6 +37,8 @@
 .singleComment > div:first-child > button {
 	fill: rgba(165, 165, 165, 0.5);
 	width: 20px;
+	transition: var(--transition-default);
+	transition-property: fill;
 }
 .singleComment > div:first-child > span {
 	font-size: 20px;
@@ -51,6 +53,14 @@
 .singleComment > div:first-child > button#checkmark > svg {
 	width: 20px;
 	margin-top: 10px;
+	transition: var(--transition-default);
+	transition-property: fill;
+}
+.singleComment > div:first-child > button:hover {
+	fill: rgba(165, 165, 165, 0.8);
+}
+.singleComment > div:first-child > button#checkmark > svg:hover {
+	fill: var(--theme-purple);
 }
 
 .singleComment > div:last-child {
@@ -85,6 +95,9 @@
 	line-height: 14px;
 	color: var(--black-07);
 	text-decoration: none;
+}
+.singleComment > div:last-child > div:last-child > div > span > a:hover {
+	text-decoration: underline;
 }
 .singleComment > div:last-child > div:last-child > div > span > span#rating {
 	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;

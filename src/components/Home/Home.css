@@ -58,10 +58,20 @@
 	margin-right: 10px;
 	color: white;
 	padding: 10px;
+	transition: var(--transition-default);
+	transition-property: background, color;
+}
+.buttonsTo > a:hover {
+	background: transparent;
+	color: var(--theme-purple);
 }
 .buttonsTo > a:last-child {
 	color: var(--theme-purple);
 	background: transparent;
+}
+.buttonsTo > a:last-child:hover {
+	background: var(--theme-purple);
+	color: white;
 }
 
 .perksBlock {
@@ -114,4 +124,7 @@
 .outroBlock > div:last-child > a {
 	text-decoration: none;
 	color: var(--theme-purple);
+}
+.outroBlock > div:last-child > a:hover {
+	text-decoration: underline;
 }

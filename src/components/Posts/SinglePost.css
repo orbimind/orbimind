@@ -46,6 +46,8 @@
 .singlePost > div:first-child > div:first-child > button {
 	fill: rgba(165, 165, 165, 0.5);
 	width: 20px;
+	transition: var(--transition-default);
+	transition-property: fill;
 }
 .singlePost > div:first-child > div:first-child > span {
 	font-size: 22px;
@@ -67,11 +69,19 @@
 	fill: rgba(165, 165, 165, 0.5);
 	width: 20px;
 	margin-top: 14px;
+	transition: var(--transition-default);
+	transition-property: fill;
 }
 #delete,
 #edit {
 	margin-left: 6px;
 	fill: rgba(165, 165, 165, 0.5);
+}
+.singlePost > div:first-child > div:last-child > button:hover,
+.singlePost > div:first-child > div:first-child > button:hover,
+#edit:hover,
+#delete:hover {
+	fill: rgba(165, 165, 165, 0.8);
 }
 
 .singlePost > div:last-child {
@@ -124,6 +134,9 @@
 	line-height: 22px;
 	color: var(--black-07);
 	text-decoration: none;
+}
+.singlePost > div:last-child > div:last-child > div > span > a:hover {
+	text-decoration: underline;
 }
 .singlePost > div:last-child > div:last-child > div > span > span#rating {
 	font-family: Roboto, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;

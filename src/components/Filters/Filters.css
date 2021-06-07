@@ -29,6 +29,12 @@
 	margin-left: 10px;
 	color: white;
 	padding: 0 6px;
+	transition: var(--transition-default);
+	transition-property: background, transform;
+}
+.filteringBar > div:first-child > a#ask:hover {
+	background-color: var(--theme-purple-darken);
+	transform: scale(1.02);
 }
 
 .filteringBar > div:last-child {

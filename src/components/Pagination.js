@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const style = {
     div: {
@@ -45,15 +45,22 @@ const style = {
     }
 }
 
-export default function Pagination({ gotoNextPage, gotoPrevPage, currentPage }) {
+export default function Pagination({ gotoNextPage, gotoPrevPage, currentPage, isNext }) {
     return (
-        <div style={style.div}>
-            {(currentPage == 1) 
-            ? <button style={{...style.button, ...style.buttonLeft, ...style.buttonInactive}} disabled={true} onClick={gotoPrevPage}>&larr;</button> 
-            : <button style={{...style.button, ...style.buttonLeft}} onClick={gotoPrevPage}>&larr;</button> }
+        <div style={style.div} className='unselectable'>
+            {
+                currentPage == 1
+                ? <button style={{...style.button, ...style.buttonLeft, ...style.buttonInactive}} disabled={true} onClick={gotoPrevPage}>&larr;</button> 
+                : <button style={{...style.button, ...style.buttonLeft}} onClick={gotoPrevPage}>&larr;</button> 
+            }
             
             <button style={style.current}>{currentPage}</button>
-            <button style={{...style.button, ...style.buttonRight}} onClick={gotoNextPage}>&rarr;</button>
+
+            {
+                isNext
+                ? <button style={{...style.button, ...style.buttonRight}} onClick={gotoNextPage}>&rarr;</button>
+                : <button style={{...style.button, ...style.buttonRight, ...style.buttonInactive}} disabled={true} onClick={gotoNextPage}>&rarr;</button>
+            }
         </div>
     )
 }

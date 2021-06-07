@@ -14,7 +14,7 @@ export function Header() {
 
     return (
         <div className='headerRoot'>
-            <div className='header'>
+            <div className='header unselectable'>
                 <Link to='/' className='logo'><LogoFull width='100%' height='100%' /></Link>
                 <Link to='/posts' className='link'>
                     Posts
@@ -43,7 +43,7 @@ export function Header() {
 
 export function Footer() {
     return (
-        <div className='footerRoot'>
+        <div className='footerRoot unselectable'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220"><path fill="#7c6aef" fillOpacity="1" d="M0,96L60,117.3C120,139,240,181,360,170.7C480,160,600,96,720,64C840,32,960,32,1080,58.7C1200,85,1320,139,1380,165.3L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
             <div className='footer'>
                 <div>

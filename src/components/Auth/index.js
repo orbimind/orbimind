@@ -6,6 +6,7 @@ import axios from 'axios'
 
 import { Logo } from '../../assets/Brand.jsx'
 import './Auth.css'
+import '../Animations.css'
 
 export function Login() {
     const history = useHistory()
@@ -49,7 +50,7 @@ export function Login() {
                         expires: (response.data.expires_in / 86400),
                         sameSite: 'strict'
                     });
-                    setTimeout(() => history.push('/posts'), 1500);
+                    setTimeout(() => location.replace('/posts'), 1500);
                     return response.data.message;
                 },
                 error: (error) => {
@@ -69,13 +70,13 @@ export function Login() {
 
     return (
         <div className="authScreen">
-            <Logo />
-            <h1>Welcome back!</h1>
+            <Logo className='popTop' />
+            <h1 className='fadeIn'>Welcome back!</h1>
             <form onSubmit={ e => handleSubmit(e.preventDefault()) }>
-                <input type="text" placeholder="Enter your username" name="username" value={ username } onChange={ handleChange } required />
-                <input type="password" placeholder="Enter your password" name="password" value={ password } onChange={ handleChange } required />
+                <input className='widthUpAuth' type="text" placeholder="Enter your username" name="username" value={ username } onChange={ handleChange } required />
+                <input className='widthUpAuth' type="password" placeholder="Enter your password" name="password" value={ password } onChange={ handleChange } required />
                 <div><Link to="/forgot-password" id="forgot">Forgot password?</Link></div>
-                <input type="submit" value="Log in" />
+                <input className='fadeIn' type="submit" value="Log in" />
                 <span>Not a member yet? <Link to="/register">Sing up</Link>!</span>
             </form>
             <Toaster
@@ -170,15 +171,15 @@ export function Register() {
 
     return (
         <div className="authScreen">
-            <Logo />
-            <h1>Become a part!</h1>
-            <form onSubmit={ e => handleSubmit(e.preventDefault()) }>
-                <input type="text" value={ username } onChange={ handleChange } name="username" placeholder="Enter your username" required/>
-                <input type="text" value={ name } onChange={ handleChange } name="name" placeholder="Enter your name" required/>
-                <input type="email" value={ email } onChange={ handleChange } name="email" placeholder="Enter your email" required/>
-                <input type="password" value={ password } onChange={ handleChange } name="password" placeholder="Enter your password" required/>
-                <input type="password" value={ password_confirmation } onChange={ handleChange } name="password_confirmation" placeholder="Repeat your password" required/>
-                <input type="submit" value="Become a part" />
+            <Logo className='popTop' />
+            <h1 className='fadeIn'>Become a part!</h1>
+            <form className='widthUpAuth' onSubmit={ e => handleSubmit(e.preventDefault()) }>
+                <input className='widthUpAuth' type="text" value={ username } onChange={ handleChange } name="username" placeholder="Enter your username" required/>
+                <input className='widthUpAuth' type="text" value={ name } onChange={ handleChange } name="name" placeholder="Enter your name" required/>
+                <input className='widthUpAuth' type="email" value={ email } onChange={ handleChange } name="email" placeholder="Enter your email" required/>
+                <input className='widthUpAuth' type="password" value={ password } onChange={ handleChange } name="password" placeholder="Enter your password" required/>
+                <input className='widthUpAuth' type="password" value={ password_confirmation } onChange={ handleChange } name="password_confirmation" placeholder="Repeat your password" required/>
+                <input className='fadeIn' type="submit" value="Become a part" />
                 <span>Already registered? <Link to="/login">Log in</Link>!</span>
             </form>
             <Toaster
@@ -241,11 +242,11 @@ export function ForgotPassword() {
 
     return (
         <div className="authScreen">
-            <Logo />
-            <h1>Let's get your password back!</h1>
+            <Logo className='popTop' />
+            <h1 className='fadeIn'>Let's get your password back!</h1>
             <form onSubmit={ e => handleSubmit(e.preventDefault()) }>
-                <input type="email" value={ email } onChange={ handleChange } placeholder="Enter your email" required />
-                <input type="submit" value="Send email" />
+                <input className='widthUpAuth' type="email" value={ email } onChange={ handleChange } placeholder="Enter your email" required />
+                <input className='fadeIn' type="submit" value="Send email" />
                 <span><Link to="/login">Back</Link></span>
             </form>
             <Toaster
@@ -327,12 +328,12 @@ export function ResetPassword() {
 
     return (
         <div className="authScreen">
-            <Logo />
-            <h1>Reset password</h1>
+            <Logo className='popTop' />
+            <h1 className='fadeIn'>Reset password</h1>
             <form onSubmit={ e => onSubmit(e.preventDefault()) }>
-                <input type="password" id='password' value={ password } onChange={ onChange } placeholder="Enter your new password" required />
-                <input type="password" id='password_c' value={ password_confirmation } onChange={ onChange } placeholder="Repeat your password" required />
-                <input type="submit" value="Update password" />
+                <input className='widthUpAuth' type="password" id='password' value={ password } onChange={ onChange } placeholder="Enter your new password" required />
+                <input className='widthUpAuth' type="password" id='password_c' value={ password_confirmation } onChange={ onChange } placeholder="Repeat your password" required />
+                <input className='fadeIn' type="submit" value="Update password" />
                 <span><Link to="/login">Back</Link></span>
             </form>
             <Toaster

@@ -26,7 +26,6 @@
 	height: 200px;
 	background-color: white;
 	border-radius: 4px;
-	border: 1px solid #e1e4e8;
 }
 
 .commentInput > form > textarea {
@@ -37,7 +36,15 @@
 	padding: 10px 10px;
 	border-radius: 4px 4px 0 0;
 	background: #f8f7ff;
-	border-bottom: 1px solid #e1e4e8;
+	border: 1px solid #e1e4e8;
+	transition: var(--transition-default);
+	transition-property: border, background;
+}
+.commentInput > form > textarea:hover {
+	border-color: rgba(124, 106, 239, 0.5);
+}
+.commentInput > form > textarea:focus {
+	border-color: rgba(124, 106, 239, 0.3);
 }
 
 .commentInput > form > div {
@@ -46,6 +53,11 @@
 	min-height: 22%;
 	display: flex;
 	justify-content: space-between;
+	border-left: 1px solid #e1e4e8;
+	border-right: 1px solid #e1e4e8;
+	border-bottom: 1px solid #e1e4e8;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
 	align-items: center;
 }
 .commentInput > form > div > a#markdown {
@@ -76,6 +88,12 @@
 	border: none;
 	color: white;
 	cursor: pointer;
+	transition: var(--transition-default);
+	transition-property: background, transform;
+}
+.commentInput > form > div > input:hover {
+	background: rgb(109, 90, 237);
+	transform: scale(0.99);
 }
 
 .notLogged {
