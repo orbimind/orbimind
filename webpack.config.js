@@ -3,7 +3,7 @@ const HtmlWebpackPlugin =  require('html-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 const mode = process.env.NODE_ENV || "development";
-const target = 'node' || "web";
+const target = "web";
 
 module.exports = {
     entry : './src/index.js',
