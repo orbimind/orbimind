@@ -5,10 +5,10 @@ import axios from 'axios'
 import PopularTagsList from '../Tags/PopularTagsList'
 import FilteringBar from '../Filters'
 import Preview from '../Base/Preview.js'
-import Pagination from '../Pagination'
+import Pagination from '../Base/Pagination'
 import PostsList from './PostsList'
-import { PostLoading } from '../Loading'
-import '../Animations.css'
+import { PostLoading } from '../Misc/Loading'
+import '../Misc/Animations.css'
 import './Posts.css'
 
 export default function Posts() {

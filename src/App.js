@@ -8,7 +8,7 @@ import CreatePost from './components/Posts/CreatePost'
 import SinglePost from './components/Posts/SinglePost'
 import Tags from './components/Tags/Tags'
 import { LoginRoute, LoggedRoute, LoginHomeRoute } from './components/Routing'
-import NotFound from './components/NotFound'
+import NotFound from './components/Base/NotFound'
 import { Login, Register, ForgotPassword, ResetPassword } from "./components/Auth"
 import { User, UserFavorites } from './components/User'
 import UserAccount from './components/User/UserAccount'

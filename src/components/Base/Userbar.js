@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const style ={
     img: {
@@ -21,15 +21,15 @@ export function LoginButton() {
 export function UserButton({ username }) {
     const [user, setUser] = useState([]);
     useEffect(() => {
-        let cancel;
+        let cancel
 
         axios.get("https://orbimind.herokuapp.com/api/users/" + username, {
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(result => {
-            setUser(result.data);
+            setUser(result.data)
         });
 
-        return () => cancel(); 
+        return () => cancel();
     }, []);
 
     return (

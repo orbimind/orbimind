@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { Pair, Answer, Typing, Thinking, Questions } from '../../assets/Undraw.jsx'
 import './Home.css'
-import '../Animations.css'
+import '../Misc/Animations.css'
 
 const style = {
     themeWord: {

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
-import { PopularTagsLoading } from '../Loading'
+import { PopularTagsLoading } from '../Misc/Loading'
 import TagElement from './TagElement'
 import './Tags.css'
 

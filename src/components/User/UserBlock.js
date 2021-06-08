@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import moment from 'moment';
-import toast, { Toaster } from 'react-hot-toast';
-import Cookies from 'js-cookie';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import moment from 'moment'
+import toast, { Toaster } from 'react-hot-toast'
+import Cookies from 'js-cookie'
+import axios from 'axios'
 
-import UserStat from './UserStat';
+import UserStat from './UserStat'
 import { Star } from '../../assets/Misc.jsx'
-import './UserBlock.css';
+import '../Misc/Animations.css'
+import './UserBlock.css'
 
 function logout(){
     const api = {
@@ -19,7 +20,7 @@ function logout(){
         data: {},
         url: "https://orbimind.herokuapp.com/api/auth/logout"
     };
-    const promise = axios.post(api.url, api.data, { headers: api.headers });
+    const promise = axios.post(api.url, api.data, { headers: api.headers })
 
     toast.promise(
         promise, 
@@ -27,31 +28,29 @@ function logout(){
             loading: 'Processing..',
             success: () => {
                 Cookies.remove('user');
-                setTimeout(() => {
-                    location.href = '/';
-                }, 1000);
-                return 'Goodbye!';
+                setTimeout(() => location.href = '/', 1000)
+                return 'Goodbye!'
             },
             error: (error) => {
-                return error.response.data.message;
+                return error.response.data.message
             }
         }
     );
 }
 
 export default function UserBlock({ username, logged, toSettings }) {
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState([])
     useEffect(() => {
-        let cancel;
+        let cancel
 
         axios.get("https://orbimind.herokuapp.com/api/users/" + username, {
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(result => {
-            setUser(result.data);
+            setUser(result.data)
         });
 
-        return () => cancel(); 
-    }, []);
+        return () => cancel()
+    }, [])
 
     return (
         <div className="userBlock">
@@ -61,7 +60,7 @@ export default function UserBlock({ username, logged, toSettings }) {
                 }
             </div>
             <div>
-                <h2>{ username }<br/><small>{ user.name }</small></h2>
+                <h2 className="fadeInDelayed">{ username }<br/><small>{ user.name }</small></h2>
                 <UserStat title='Rating' image='rating' content={ user.rating } />
                 <UserStat title='Member for' image='time' content={ moment(user.created_at).fromNow(true) } />
                 <div id='favorites'>

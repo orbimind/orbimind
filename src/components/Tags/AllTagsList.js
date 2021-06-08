@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 import SingleTag from './SingleTag'
-import { AllTagsLoading } from '../Loading'
+import { AllTagsLoading } from '../Misc/Loading'
 
 export default function AllTagsList() {
     const [loading, setLoading] = useState(true)

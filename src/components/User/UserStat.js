@@ -8,13 +8,13 @@ export default function UserStat({ title, image, content }) {
     let isTime = false
 
     switch(image) {
-        case 'rating': isRating = true; break;
-        case 'time': isTime = true; break;
+        case 'rating': isRating = true; break
+        case 'time': isTime = true; break
     }
 
     return (
         <div className="userStat">
-            <h3>{ title }</h3>
+            <h3 className='unselectable'>{ title }</h3>
             <div>
                 {
                     isRating && <Karma />
@@ -22,7 +22,7 @@ export default function UserStat({ title, image, content }) {
                 {
                     isTime && <Replace />
                 }
-                <span>{ content }</span>
+                <span className="fadeInDelayed">{ content }</span>
             </div>
         </div>
     );

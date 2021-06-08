@@ -19,6 +19,11 @@
 	animation: fadeIn 0.4s ease forwards;
 	opacity: 0;
 }
+.fadeInOrder {
+	opacity: 0;
+	animation: 0.3s fadeIn ease forwards;
+	animation-delay: calc(var(--order) * 50ms);
+}
 .fadeInDelayed {
 	animation: fadeIn 0.4s ease forwards;
 	animation-delay: 250ms;

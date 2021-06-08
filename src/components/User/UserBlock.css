@@ -38,6 +38,7 @@
 	font-size: 20px;
 	line-height: 20px;
 	margin-bottom: 20px;
+	min-height: 40px;
 }
 .userBlock > div:last-child > h2 > small {
 	font-weight: 300;
@@ -59,12 +60,15 @@
 	line-height: 12px;
 	color: #7c6aef;
 }
+.userBlock > div:last-child > div#favorites a:hover {
+	text-decoration: underline;
+}
 .userBlock > div:last-child > a {
 	display: grid;
 	place-items: center;
 	width: 100%;
 	height: 30px;
-	background-color: #7c6aef;
+	background-color: var(--theme-purple);
 	border-radius: 10px;
 	font-weight: 600;
 	font-size: 14px;
@@ -72,6 +76,11 @@
 	color: #ffffff;
 	text-decoration: none;
 	margin-top: 20px;
+	transition: var(--transition-default);
+	transition-property: background;
+}
+.userBlock > div:last-child > a:hover {
+	background-color: #5b44ee;
 }
 .userBlock > div:last-child > button#logoutButton {
 	display: grid;
@@ -83,7 +92,12 @@
 	font-weight: 600;
 	font-size: 14px;
 	line-height: 16px;
-	color: #ffffff;
+	color: white;
 	text-decoration: none;
 	margin-top: 20px;
+	transition: var(--transition-default);
+	transition-property: background, color;
+}
+.userBlock > div:last-child > button#logoutButton:hover {
+	background-color: red;
 }

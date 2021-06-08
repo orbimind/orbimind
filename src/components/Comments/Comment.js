@@ -7,8 +7,8 @@ import moment from 'moment'
 import axios from 'axios'
 
 import { Upvote, Edit, Trash, Checkmark, CheckmarkFilled } from '../../assets/Misc.jsx'
-import '../Animations.css'
-import '../Markdown.css'
+import '../Misc/Animations.css'
+import '../Misc/Markdown.css'
 
 export default function Comment({ comment, post }) {
     const [creator, setCreator] = useState([])
@@ -217,7 +217,7 @@ export default function Comment({ comment, post }) {
     }
 
     return (
-        <div className="singleComment listPopInUnder" style={{'--order': comment.id}}>
+        <div className="singleComment fadeInOrder" style={{'--order': comment.id}}>
             <div>
                 <button id="like" onClick={ e => createLike(e.currentTarget.id) }>
                 {

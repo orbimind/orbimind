@@ -6,7 +6,7 @@ import axios from 'axios'
 
 import FilteringBar from '../Filters'
 import PostsList from '../Posts/PostsList'
-import Pagination from '../Pagination'
+import Pagination from '../Base/Pagination'
 import UserBlock from './UserBlock'
 import './User.css'
 

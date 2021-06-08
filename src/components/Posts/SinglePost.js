@@ -9,9 +9,9 @@ import axios from 'axios'
 import TagsList from '../Tags/TagsList'
 import CommentList from '../Comments/CommentList'
 import CommentInput from '../Comments/CommentInput'
-import '../Animations.css'
+import '../Misc/Animations.css'
 import './SinglePost.css'
-import '../Markdown.css'
+import '../Misc/Markdown.css'
 
 import { Bell, Star, Edit, Trash, Upvote } from '../../assets/Misc.jsx'
 

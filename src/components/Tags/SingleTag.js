@@ -1,5 +1,5 @@
-import React from 'react';
-import TagElement from './TagElement';
+import React from 'react'
+import TagElement from './TagElement'
 
 export default function SingleTag({ title, description }) {
     return (

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import toast, { Toaster } from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import { Link, useHistory } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 
 import { Markdown } from '../../assets/Misc.jsx'
-import '../Animations.css'
+import '../Misc/Animations.css'
 import './CommentInput.css'
 
 export default function CommentInput({ post_id, status }) {
@@ -72,25 +72,6 @@ export default function CommentInput({ post_id, status }) {
                     <input type='submit' value='Comment on this post' />
                 </div>
             </form>
-            <Toaster
-                position="bottom-center"
-                reverseOrder={false}
-                toastOptions={{
-                    style: {
-                        borderRadius: '8px',
-                        backgroundColor: 'white',
-                        padding: '10px',
-                    },
-                    duration: 2000,
-                    success: {
-                        iconTheme: {
-                            primary: '#7c6aef',
-                            secondary: '#FFF',
-                        },
-                    },
-                    error: { duration: 4000 }
-                }}
-            />
         </div>
     )
 }

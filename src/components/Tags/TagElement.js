@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../Animations.css'
+import '../Misc/Animations.css'
 
 export default function TagElement({ title }) {
     return (

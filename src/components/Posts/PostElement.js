@@ -8,7 +8,7 @@ import axios from 'axios'
 import { Upvote, CheckmarkFilled } from '../../assets/Misc.jsx'
 import TagsList from "../Tags/TagsList"
 import './PostElement.css'
-import '../Animations.css'
+import '../Misc/Animations.css'
 
 const style = {
     link: {

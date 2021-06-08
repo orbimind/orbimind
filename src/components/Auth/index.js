@@ -6,10 +6,9 @@ import axios from 'axios'
 
 import { Logo } from '../../assets/Brand.jsx'
 import './Auth.css'
-import '../Animations.css'
+import '../Misc/Animations.css'
 
 export function Login() {
-    const history = useHistory()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -69,7 +68,7 @@ export function Login() {
     }
 
     return (
-        <div className="authScreen">
+        <div className="authScreen unselectable">
             <Logo className='popTop' />
             <h1 className='fadeIn'>Welcome back!</h1>
             <form onSubmit={ e => handleSubmit(e.preventDefault()) }>
@@ -241,7 +240,7 @@ export function ForgotPassword() {
     }
 
     return (
-        <div className="authScreen">
+        <div className="authScreen unselectable">
             <Logo className='popTop' />
             <h1 className='fadeIn'>Let's get your password back!</h1>
             <form onSubmit={ e => handleSubmit(e.preventDefault()) }>
@@ -327,7 +326,7 @@ export function ResetPassword() {
     }
 
     return (
-        <div className="authScreen">
+        <div className="authScreen unselectable">
             <Logo className='popTop' />
             <h1 className='fadeIn'>Reset password</h1>
             <form onSubmit={ e => onSubmit(e.preventDefault()) }>
