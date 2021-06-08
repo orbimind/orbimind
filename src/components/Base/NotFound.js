@@ -1,5 +1,7 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+
 import { ErrorPage } from '../../assets/Undraw.jsx'
 
 const style = {
@@ -41,6 +43,9 @@ const style = {
 export default function NotFound() {
     return (
         <div style={style.div} className='unselectable'>
+            <Helmet>
+                <title>Not found &#8739; Orbimind</title> 
+            </Helmet>
             <ErrorPage width={400} height={400} />
             <span style={style.error}>Error 404</span>
             <h1 style={style.h1}>Looks like you've got lost</h1>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 import { Pair, Answer, Typing, Thinking, Questions } from '../../assets/Undraw.jsx'
 import './Home.css'
@@ -23,6 +24,9 @@ function Buttons() {
 export default function Home() {
     return (
         <div className='homeRoot'>
+            <Helmet>
+                <title>Home &#8739; Orbimind</title>
+            </Helmet>
             <div className='home'>
                 <div className='introBlock'>
                     <div>

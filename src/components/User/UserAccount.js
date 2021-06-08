@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
+import { Helmet } from 'react-helmet'
 import toast from 'react-hot-toast'
 import Cookies from 'js-cookie'
 import axios from 'axios'
@@ -144,6 +145,9 @@ export default function UserAccount() {
 
     return (
         <div className='userRoot'>
+            <Helmet>
+                <title>Account settings &#8739; Orbimind</title> 
+            </Helmet>
             <div className='user'>
                 <div className='settingsBlock'>
                     <h1>Account settings</h1>

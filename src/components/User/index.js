@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { useLocation } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 
@@ -79,6 +80,9 @@ export function User() {
 
     return (
         <div className='userRoot'>
+            <Helmet>
+                <title>{`${username} ∣ Orbimind`}</title> 
+            </Helmet>
             <div className='user'>
                 <div>
                     <FilteringBar username={ username } />
@@ -122,6 +126,9 @@ export function UserFavorites() {
 
     return (
         <div className='userRoot'>
+            <Helmet>
+                <title>{`${username}'s favorites ∣ Orbimind`}</title> 
+            </Helmet>
             <div className='user'>
                 <div>
                     <FilteringBar username={ username } favorite={ true } noFilters={ true }/>

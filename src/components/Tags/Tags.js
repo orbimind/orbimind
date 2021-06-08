@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 import AllTagsList from './AllTagsList'
 import Preview from '../Base/Preview'
@@ -9,6 +10,9 @@ export default function Tags() {
 
     return (
         <>
+        <Helmet>
+            <title>All tags &#8739; Orbimind</title> 
+        </Helmet>
         <Preview title={ title }/>
         <div className='tagsRoot'>
             <div className='tags'>

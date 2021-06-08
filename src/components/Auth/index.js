@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { Link, useParams, useHistory } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 
@@ -69,6 +70,9 @@ export function Login() {
 
     return (
         <div className="authScreen unselectable">
+            <Helmet>
+                <title>Login &#8739; Orbimind</title>
+            </Helmet>
             <Logo className='popTop' />
             <h1 className='fadeIn'>Welcome back!</h1>
             <form onSubmit={ e => handleSubmit(e.preventDefault()) }>
@@ -170,6 +174,9 @@ export function Register() {
 
     return (
         <div className="authScreen">
+            <Helmet>
+                <title>Register &#8739; Orbimind</title>
+            </Helmet>
             <Logo className='popTop' />
             <h1 className='fadeIn'>Become a part!</h1>
             <form className='widthUpAuth' onSubmit={ e => handleSubmit(e.preventDefault()) }>
@@ -241,6 +248,9 @@ export function ForgotPassword() {
 
     return (
         <div className="authScreen unselectable">
+            <Helmet>
+                <title>Forgot Password &#8739; Orbimind</title>
+            </Helmet>
             <Logo className='popTop' />
             <h1 className='fadeIn'>Let's get your password back!</h1>
             <form onSubmit={ e => handleSubmit(e.preventDefault()) }>
@@ -327,6 +337,9 @@ export function ResetPassword() {
 
     return (
         <div className="authScreen unselectable">
+            <Helmet>
+                <title>Reset Password &#8739; Orbimind</title>
+            </Helmet>
             <Logo className='popTop' />
             <h1 className='fadeIn'>Reset password</h1>
             <form onSubmit={ e => onSubmit(e.preventDefault()) }>

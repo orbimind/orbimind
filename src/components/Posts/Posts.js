@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import axios from 'axios'
 
 import PopularTagsList from '../Tags/PopularTagsList'
@@ -52,12 +53,13 @@ export default function Posts() {
   useEffect(() => {
     let newUrl = currentPageUrl.slice(0, currentPageUrl.indexOf('?')) + '?'
     let queries = new URLSearchParams(currentPageUrl.slice(currentPageUrl.indexOf('?')))
-
+    
     queries.set('category', query.get('category'))
+    queries.set('search', query.get('search'))
     query.get('order') ? queries.set('order', query.get('order')) : queries.set('order', 'date$desc')
     queries.set('status', query.get('status'))
     queries.has('page') && queries.set('page', '1')
-
+    
     for (const q of queries) {
       newUrl += q[0] + '=' + q[1] + '&'
     }
@@ -65,7 +67,7 @@ export default function Posts() {
     if (newUrl[newUrl.length - 1] === '&') {
       newUrl = newUrl.slice(0, newUrl.length - 1)
     }
-
+  
     setCurrentPageUrl(newUrl)
   }, [query])
 
@@ -78,6 +80,9 @@ export default function Posts() {
 
   return (
     <>
+    <Helmet>
+        <title>Posts &#8739; Orbimind</title>
+    </Helmet>
     <Preview title={title}/>
     <div className='postsRoot'>
         <div className='posts fadeIn'>

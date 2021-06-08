@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
 import ReactMarkdown from 'react-markdown'
+import { Helmet } from 'react-helmet'
 import Cookies from 'js-cookie'
 import moment from 'moment'
 import axios from 'axios'
@@ -282,6 +283,9 @@ export default function SinglePost() {
 
     return (
         <div className='singlePostRoot'>
+            <Helmet>
+                <title>{`${post.title} ∣ Orbimind`}</title> 
+            </Helmet>
             <div className='singlePostBlock'>
                 <div className='singlePost'>
                     <div>

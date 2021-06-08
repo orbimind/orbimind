@@ -3,10 +3,12 @@ import { useParams, useHistory } from "react-router-dom"
 import makeAnimated from 'react-select/animated'
 import toast, { Toaster } from 'react-hot-toast'
 import AsyncSelect from 'react-select/async'
+import { Helmet } from 'react-helmet'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 
 import { Markdown } from '../../assets/Misc.jsx'
+import '../Misc/Animations.css'
 import './CreatePost.css'
 
 const animated = makeAnimated();
@@ -143,7 +145,14 @@ export default function CreatePost() {
 
     return (
         <div className='createPostRoot'>
-            <div className='createPostBox'>
+            <Helmet>
+                {
+                    post_id 
+                    ? <title>Edit post &#8739; Orbimind</title> 
+                    : <title>Create post &#8739; Orbimind</title>
+                }
+            </Helmet>
+            <div className='createPostBox fadeIn'>
                 {
                     post_id
                     ? <h1>Edit a post</h1>
