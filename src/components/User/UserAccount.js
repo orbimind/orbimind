@@ -31,7 +31,7 @@ export default function UserAccount() {
             case 'password':
                 setPassword(e.target.value)
                 break;
-            case 'confirm_password':
+            case 'password_confirmation':
                 setPasswordConfirmation(e.target.value)
                 break;
             case 'image':{

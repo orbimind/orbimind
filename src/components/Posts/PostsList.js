@@ -7,8 +7,8 @@ export default function PostsList({ posts }) {
                 key={ post.id }
                 post={ post }
                 content={ 
-                    ( post.content.length >= 228 )
-                    ? post.content.substr(0, 228) + "..."
+                    ( post.content.length >= 164 )
+                    ? post.content.substr(0, 164) + ".."
                     : post.content
                 }
             />
