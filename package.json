@@ -10,9 +10,18 @@
     "build": "NODE_ENV=production webpack",
     "build-dev": "webpack"
   },
-  "keywords": [],
+  "keywords": [
+    "orbimind",
+    "qa",
+    "question",
+    "stackoverflow"
+    "react",
+    "webpack",
+    "answer",
+    "qa-service"
+  ],
   "author": "Paul Litovka",
-  "license": "GNU GPL v3.0",
+  "license": "GPL-3.0",
   "dependencies": {
     "axios": "^0.21.1",
     "js-cookie": "^2.2.1",
