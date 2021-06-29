@@ -60,6 +60,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: -moz-fit-content;
 	width: fit-content;
 	height: 24px;
 	background-color: rgba(124, 106, 239, 0.3);
