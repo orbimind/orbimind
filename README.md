@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://orbimind.netlify.app" target="_blank"><img src="https://raw.githubusercontent.com/PAXANDDOS/PAXANDDOS/main/orbimind/logo-full.svg" height="130px"></a>
+    <a href="https://orbimind.netlify.app" target="_blank"><img src="https://raw.githubusercontent.com/orbimind/assets/main/logo-full.svg" height="130px"></a>
     <h2 align="center"><a href="https://orbimind.netlify.app" target="_blank">Orbimind - where great minds are in the same orbit.</h2>
 </p>
 <p align="center">
@@ -56,14 +56,14 @@ Orbimind created with help of these useful dependencies:
 </ul>
 <h2>:framed_picture: Screenshots</h2>
 <p aling="center">
-<img align="center" height="500" src="https://raw.githubusercontent.com/PAXANDDOS/PAXANDDOS/main/orbimind/unknown.png" />
-<img align="center" height="500" src="https://raw.githubusercontent.com/PAXANDDOS/PAXANDDOS/main/orbimind/unknown%20(1).png" />
-<img align="center" height="500" src="https://raw.githubusercontent.com/PAXANDDOS/PAXANDDOS/main/orbimind/unknown%20(2).png" />
-<img align="center" height="500" src="https://raw.githubusercontent.com/PAXANDDOS/PAXANDDOS/main/orbimind/unknown%20(3).png" />
-<img align="center" height="500" src="https://raw.githubusercontent.com/PAXANDDOS/PAXANDDOS/main/orbimind/unknown%20(4).png" />
-<img align="center" height="500" src="https://raw.githubusercontent.com/PAXANDDOS/PAXANDDOS/main/orbimind/unknown%20(5).png" />
-<img align="center" height="500" src="https://raw.githubusercontent.com/PAXANDDOS/PAXANDDOS/main/orbimind/unknown%20(6).png" />
-<img align="center" height="500" src="https://raw.githubusercontent.com/PAXANDDOS/PAXANDDOS/main/orbimind/unknown%20(7).png" />
+<img align="center" height="500" src="https://raw.githubusercontent.com/orbimind/assets/main/unknown.png" />
+<img align="center" height="500" src="https://raw.githubusercontent.com/orbimind/assets/main/unknown%20(1).png" />
+<img align="center" height="500" src="https://raw.githubusercontent.com/orbimind/assets/main/unknown%20(2).png" />
+<img align="center" height="500" src="https://raw.githubusercontent.com/orbimind/assets/main/unknown%20(3).png" />
+<img align="center" height="500" src="https://raw.githubusercontent.com/orbimind/assets/main/unknown%20(4).png" />
+<img align="center" height="500" src="https://raw.githubusercontent.com/orbimind/assets/main/unknown%20(5).png" />
+<img align="center" height="500" src="https://raw.githubusercontent.com/orbimind/assets/main/unknown%20(6).png" />
+<img align="center" height="500" src="https://raw.githubusercontent.com/orbimind/assets/main/unknown%20(7).png" />
 </p>
 <h2>:fox_face: Have a great day!</h2>
 <p><b>Don't forget to check out <a href="https://github.com/PAXANDDOS/orbimind-api">Orbimind API!</a></b></p>
